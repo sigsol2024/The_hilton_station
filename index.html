@@ -30,13 +30,31 @@
             transform: scale(1);
             pointer-events: auto;
         }
-        .room-slide-overlay {
-            background: linear-gradient(90deg, rgba(30, 61, 49, 0.82) 0%, rgba(30, 61, 49, 0.52) 38%, rgba(30, 61, 49, 0.1) 80%);
+        .hero-glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.125rem;
+            padding: 1.5rem;
         }
-        @media (max-width: 767px) {
-            .room-slide-overlay {
-                background: linear-gradient(0deg, rgba(30, 61, 49, 0.8) 0%, rgba(30, 61, 49, 0.52) 42%, rgba(30, 61, 49, 0.1) 82%);
+        @media (min-width: 768px) {
+            .hero-glass-panel {
+                padding: 2rem;
             }
+        }
+        .lifestyle-glass-caption {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 0.125rem;
+        }
+        .about-hero-slide {
+            background-color: #1E3D31;
+            background-image: linear-gradient(rgba(30, 61, 49, 0.94), rgba(30, 61, 49, 0.94)), url('assets/hill-station-brand-pattern-crop-greenbackground.png');
+            background-size: cover;
+            background-position: center;
         }
         .room-hero-copy {
             opacity: 0;
@@ -372,12 +390,35 @@
   <a class="mt-8 inline-flex h-14 items-center justify-center bg-primary px-6 font-label-caps text-[14px] uppercase text-on-primary" href="booking_the_hill_station_jos.html">Book Now</a>
 </div>
 <!-- Hero Section -->
-<section class="relative min-h-[100svh] w-full overflow-hidden bg-primary text-on-primary" id="room-hero-slider" aria-label="Featured room categories">
-<div class="room-hero-slide is-active absolute inset-0" data-room-slide>
+<section class="relative min-h-[100svh] w-full overflow-hidden bg-primary text-on-primary" id="room-hero-slider" aria-label="Featured highlights">
+<div class="room-hero-slide about-hero-slide is-active absolute inset-0" data-room-slide>
+<div class="absolute inset-0" style="background: radial-gradient(circle at 78% 22%, rgba(168,135,80,0.24), transparent 34%), linear-gradient(110deg, rgba(24,24,24,0.18), transparent 52%);"></div>
+<div class="relative z-10 mx-auto grid min-h-full max-w-container-max grid-cols-1 items-center gap-2 px-margin-mobile pb-28 pt-36 md:min-h-full md:gap-3 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid-cols-12 lg:gap-gutter">
+<div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
+<h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white leading-tight md:text-display-lg">A Plateau Icon, Restored for Today</h1>
+<p class="mb-10 max-w-xl font-body-lg text-body-lg text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
+<div class="flex flex-col gap-4 sm:flex-row">
+<a class="bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="booking_the_hill_station_jos.html">Book Your Stay</a>
+<a class="border border-secondary/70 px-8 py-4 font-label-caps text-label-caps text-secondary transition-all hover:bg-secondary hover:text-primary" href="meetings_events_the_hill_station_jos.html">View Corporate Services</a>
+</div>
+</div>
+<div class="hero-visual relative order-1 lg:order-2 lg:col-span-7">
+<div class="absolute -left-6 top-8 hidden h-28 w-28 border-l border-t border-secondary/30 md:block"></div>
+<div class="absolute -right-10 -bottom-2 hidden h-32 w-32 border-b border-r border-secondary/30 md:block"></div>
+<div class="logo-window relative z-10 mx-auto w-full" role="img" aria-label="The Hill Station logo window filled with hotel photography">
+<img alt="" aria-hidden="true" class="logo-window-segment segment-main" src="assets/logo-window/segment-photo-1.webp"/>
+<img alt="" aria-hidden="true" class="logo-window-segment segment-left-top" src="assets/logo-window/segment-photo-2.webp"/>
+<img alt="" aria-hidden="true" class="logo-window-segment segment-right-top" src="assets/logo-window/segment-photo-3.webp"/>
+<img alt="" aria-hidden="true" class="logo-window-segment segment-left-bottom" src="assets/logo-window/segment-photo-4.webp"/>
+<img alt="" aria-hidden="true" class="logo-window-segment segment-right-bottom" src="assets/logo-window/segment-photo-5.webp"/>
+</div>
+</div>
+</div>
+</div>
+<div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Suites" class="h-full w-full object-cover" src="assets/rooms/Hillstation Suit/SUITE HILLSTATION HOTEL DESIGN_page-0003.jpg"/>
-<div class="room-slide-overlay absolute inset-0"></div>
-<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:px-margin-desktop md:pb-32 md:pt-40">
-<div class="room-hero-copy max-w-2xl">
+<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
+<div class="room-hero-copy hero-glass-panel max-w-2xl">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Suites</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
@@ -392,9 +433,8 @@
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Deluxe" class="h-full w-full object-cover" src="assets/rooms/Hillstation Delux/HILLSTATION DELUX ROOM DESIGN_page-0006.jpg"/>
-<div class="room-slide-overlay absolute inset-0"></div>
-<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:px-margin-desktop md:pb-32 md:pt-40">
-<div class="room-hero-copy max-w-2xl">
+<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
+<div class="room-hero-copy hero-glass-panel max-w-2xl">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Deluxe</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
@@ -409,9 +449,8 @@
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Standard" class="h-full w-full object-cover" src="assets/rooms/Skylark Standard/skylark standard room-IWW design_page-0003.jpg"/>
-<div class="room-slide-overlay absolute inset-0"></div>
-<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:px-margin-desktop md:pb-32 md:pt-40">
-<div class="room-hero-copy max-w-2xl">
+<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
+<div class="room-hero-copy hero-glass-panel max-w-2xl">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Standard</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
@@ -443,7 +482,7 @@
                 For nearly a century, The Hill Station has stood as one of Plateau&rsquo;s most recognisable hospitality landmarks. Its stone architecture, cool climate, and storied guest history have made it a place of arrival for travellers, dignitaries, families, and communities across generations. Today, The Hill Station returns renewed: refined, restored, and reimagined for modern stays, corporate gatherings, leisure, dining, wellness, and discovery.
             </p>
 <a class="group flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary/20 pb-2 w-fit" href="about_us_the_hill_station_jos.html">
-                EXPLORE THE ESTATE <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+                Learn More <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_right_alt</span>
 </a>
 </div>
 <div class="md:col-span-7 relative">
@@ -467,8 +506,10 @@
 <img alt="The Laundry Caf&eacute; counter and pastry display" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.25 PM (4).jpeg"/>
 <img alt="Reception terrace at The Hill Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/HILLSTATION RECEPTION DESIGN/reception-terrace-01.jpg"/>
 <img alt="Reception lounge at The Hill Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/HILLSTATION RECEPTION DESIGN/reception-hall-bar-01.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-6 md:p-8">
-<p class="font-body-md text-body-md opacity-85 max-w-sm">Rooms and suites designed for comfort, privacy, warmth, and ease.</p>
+<div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+<div class="lifestyle-glass-caption w-fit max-w-sm p-4 md:p-5">
+<p class="font-body-md text-body-md text-white/90">Rooms and suites designed for comfort, privacy, warmth, and ease.</p>
+</div>
 </div>
 </article>
 <article class="group relative overflow-hidden aspect-[4/3] md:aspect-[4/5] border-t border-white/10 md:border-l md:border-t-0 lifestyle-slider" data-delay="900">
@@ -477,8 +518,10 @@
 <img alt="The Hill Station pool and leisure gardens" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.45.23 AM.jpeg"/>
 <img alt="The Lobby Lounge at The Hill Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/HILLSTATION RECEPTION DESIGN/reception-hall-bar-02.jpg"/>
 <img alt="Reception terrace seating at The Hill Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/HILLSTATION RECEPTION DESIGN/reception-terrace-02.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-6 md:p-8">
-<p class="font-body-md text-body-md opacity-85 max-w-sm">Dining, lounges, terraces, meeting rooms, and event spaces for moments with meaning.</p>
+<div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+<div class="lifestyle-glass-caption w-fit max-w-sm p-4 md:p-5">
+<p class="font-body-md text-body-md text-white/90">Dining, lounges, terraces, meeting rooms, and event spaces for moments with meaning.</p>
+</div>
 </div>
 </article>
 <article class="group relative overflow-hidden aspect-[4/3] md:aspect-[4/5] border-t border-white/10 xl:border-l xl:border-t-0 lifestyle-slider" data-delay="1800">
@@ -487,8 +530,10 @@
 <img alt="Guests walking The Hill Station estate trail" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/outdoor/hiking_trail.jpg"/>
 <img alt="The Hill Station event lounge and dining setup" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/event_conference/event1.jpg"/>
 <img alt="Reception bar at The Hill Station" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 opacity-0 group-hover:scale-105" src="assets/Facilities/HILLSTATION RECEPTION DESIGN/reception-hall-bar-03.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-6 md:p-8">
-<p class="font-body-md text-body-md opacity-85 max-w-sm">Estate walks, highland experiences, cultural connection, and access to the best of Jos.</p>
+<div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+<div class="lifestyle-glass-caption w-fit max-w-sm p-4 md:p-5">
+<p class="font-body-md text-body-md text-white/90">Estate walks, highland experiences, cultural connection, and access to the best of Jos.</p>
+</div>
 </div>
 </article>
 </div>
