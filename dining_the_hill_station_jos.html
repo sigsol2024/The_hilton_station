@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dining | The Hill Station Jos</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#A88750",
+                      "secondary": "#A88750",
+                      "outline": "#737973",
+                      "surface-container-low": "#F6F6F4",
+                      "on-secondary-container": "#696253",
+                      "on-secondary-fixed": "#1f1b10",
+                      "on-primary-fixed": "#142921",
+                      "inverse-surface": "#181818",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#1E3D31",
+                      "on-tertiary-fixed": "#261900",
+                      "surface-bright": "#F6F6F4",
+                      "surface-tint": "#1E3D31",
+                      "inverse-on-surface": "#f8efea",
+                      "background": "#F6F6F4",
+                      "surface-variant": "#EBE8E1",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#142921",
+                      "surface-container": "#F6F6F4",
+                      "on-background": "#1e1b18",
+                      "secondary-fixed": "#ebe1cf",
+                      "on-tertiary-container": "#A88750",
+                      "on-primary-container": "#819986",
+                      "outline-variant": "#c3c8c1",
+                      "tertiary-fixed-dim": "#A88750",
+                      "tertiary-container": "#3a2800",
+                      "surface-container-high": "#EBE8E1",
+                      "on-error": "#ffffff",
+                      "on-surface": "#1e1b18",
+                      "on-primary-fixed-variant": "#364c3c",
+                      "on-secondary-fixed-variant": "#4c4638",
+                      "secondary-container": "#e8dfcc",
+                      "inverse-primary": "#b4cdb8",
+                      "surface-container-highest": "#EBE8E1",
+                      "on-surface-variant": "#434843",
+                      "surface-dim": "#e1d8d4",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#5d4201",
+                      "on-primary": "#ffffff",
+                      "surface": "#F6F6F4",
+                      "primary-fixed": "#d0e9d4",
+                      "secondary-fixed-dim": "#cfc6b3",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#b4cdb8",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#211500"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "32px",
+                      "unit": "8px",
+                      "margin-mobile": "24px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "section-gap": "96px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-sm": ["Libre Caslon Text"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Libre Caslon Text"],
+                      "headline-md": ["Libre Caslon Text"],
+                      "label-caps": ["Hanken Grotesk"],
+                      "display-lg": ["Libre Caslon Text"],
+                      "headline-lg": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.16", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "600"}],
+                      "display-lg": ["60px", {"lineHeight": "1.08", "letterSpacing": "0", "fontWeight": "400"}],
+                      "headline-lg": ["44px", {"lineHeight": "1.16", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 20px 20px 0px 0px rgba(77, 100, 83, 0.1);
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    
+        /* Brand rhythm: preserve the guide's spacious editorial feel without leaving mobile pages hollow. */
+        @media (max-width: 767px) {
+            .text-display-lg { font-size: 42px !important; line-height: 1.08 !important; letter-spacing: 0 !important; }
+            .text-headline-lg { font-size: 34px !important; line-height: 1.16 !important; }
+            .py-section-gap { padding-top: 72px !important; padding-bottom: 72px !important; }
+            .pt-section-gap { padding-top: 72px !important; }
+            .pb-section-gap { padding-bottom: 72px !important; }
+            .space-y-section-gap > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-y-reverse: 0;
+                margin-top: calc(72px * calc(1 - var(--tw-space-y-reverse))) !important;
+                margin-bottom: calc(72px * var(--tw-space-y-reverse)) !important;
+            }
+            .gap-section-gap { gap: 72px !important; }
+            .mobile-hero-title { font-size: 40px !important; line-height: 1.08 !important; letter-spacing: 0 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .py-section-gap { padding-top: 88px !important; padding-bottom: 88px !important; }
+            .pt-section-gap { padding-top: 88px !important; }
+            .pb-section-gap { padding-bottom: 88px !important; }
+            .space-y-section-gap > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-y-reverse: 0;
+                margin-top: calc(88px * calc(1 - var(--tw-space-y-reverse))) !important;
+                margin-bottom: calc(88px * var(--tw-space-y-reverse)) !important;
+            }
+            .gap-section-gap { gap: 88px !important; }
+        }
+    
+        /* Responsive hero tuning: smaller titles and extra top breathing room on mobile/tablet. */
+        @media (max-width: 767px) {
+            .hero-copy { padding-top: 36px !important; }
+            .hero-title-responsive,
+            .text-display-lg.hero-title-responsive,
+            .mobile-hero-title.hero-title-responsive {
+                font-size: 34px !important;
+                line-height: 1.12 !important;
+                letter-spacing: 0 !important;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .hero-copy { padding-top: 48px !important; }
+            .hero-title-responsive,
+            .text-display-lg.hero-title-responsive,
+            .mobile-hero-title.hero-title-responsive {
+                font-size: 46px !important;
+                line-height: 1.1 !important;
+                letter-spacing: 0 !important;
+            }
+        }    
+        /* Site-wide neutral refresh: reduce sand, keep brand green for actions, and use white patterned feature bands. */
+        section.bg-primary:not(#room-hero-slider),
+        section.bg-primary-container {
+            background-color: #ffffff !important;
+            background-image: linear-gradient(rgba(255,255,255,0.91), rgba(255,255,255,0.91)), url('assets/hill-station-brand-pattern-crop-greenbackground.png') !important;
+            color: #181818 !important;
+        }
+        section.bg-primary:not(#room-hero-slider) .text-white,
+        section.bg-primary:not(#room-hero-slider) .text-on-primary,
+        section.bg-primary:not(#room-hero-slider) .text-on-primary\/75,
+        section.bg-primary:not(#room-hero-slider) .text-on-primary\/80,
+        section.bg-primary:not(#room-hero-slider) .text-on-primary-container,
+        section.bg-primary:not(#room-hero-slider) .text-on-primary-container\/75,
+        section.bg-primary:not(#room-hero-slider) .text-on-primary-container\/80,
+        section.bg-primary-container .text-white,
+        section.bg-primary-container .text-on-primary,
+        section.bg-primary-container .text-on-primary\/75,
+        section.bg-primary-container .text-on-primary\/80,
+        section.bg-primary-container .text-on-primary-container,
+        section.bg-primary-container .text-on-primary-container\/75,
+        section.bg-primary-container .text-on-primary-container\/80 {
+            color: #181818 !important;
+        }
+        section.bg-primary:not(#room-hero-slider) .text-secondary,
+        section.bg-primary:not(#room-hero-slider) .text-tertiary-fixed,
+        section.bg-primary-container .text-secondary,
+        section.bg-primary-container .text-tertiary-fixed {
+            color: #A88750 !important;
+        }
+        footer {
+            background-color: #F3F3F0 !important;
+            background-image: none !important;
+            color: #181818 !important;
+        }
+        footer h4,
+        footer .text-secondary,
+        footer .text-tertiary-fixed,
+        footer .material-symbols-outlined {
+            color: #A88750 !important;
+        }
+        footer p,
+        footer div,
+        footer .text-on-primary\/55,
+        footer .text-on-primary\/75,
+        footer .text-white\/65 {
+            color: #181818 !important;
+        }
+        footer a {
+            color: #181818 !important;
+        }
+        footer a:hover {
+            color: #1E3D31 !important;
+        }
+        footer .border-on-primary\/10 {
+            border-color: rgba(24,24,24,0.12) !important;
+        }</style>
+</head>
+<body class="bg-white text-on-surface font-body-md overflow-x-hidden">
+<!-- Site Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white border-b border-primary/10 shadow-[0_8px_30px_rgba(24,24,24,0.05)]" id="site-header" style="background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('assets/hill-station-brand-pattern-crop-greenbackground.png'); background-size: 620px auto; background-position: center;">
+  <div class="mx-auto flex h-24 max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop">
+    <a class="flex shrink-0 items-center" href="index.html" aria-label="The Hill Station home">
+      <img alt="The Hill Station" class="w-[200px] md:w-[220px] h-auto" src="assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7" aria-label="Primary navigation">
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="index.html">Home</a>
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="booking_the_hill_station_jos.html">Room</a>
+  <div class="relative group h-12 flex items-center">
+    <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="#">
+      Amenities <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+    </a>
+    <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="dining_the_hill_station_jos.html">Dining</a>
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="meetings_events_the_hill_station_jos.html">Meeting &amp; Event</a>
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="leisure.html">Leisure</a>
+    </div>
+  </div>
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="contact_the_hill_station_jos_master_update.html">Contact Us</a>
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="gallery_the_hill_station_jos.html">Gallery</a>
+  <div class="relative group h-12 flex items-center">
+    <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="about_us_the_hill_station_jos.html">
+      About Us <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+    </a>
+    <div class="absolute right-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="estate_experiences_the_hill_station_jos.html">Hill Station Experiences</a>
+    </div>
+  </div>
+</nav>
+    <div class="hidden lg:flex items-center">
+      <a class="inline-flex h-12 items-center border border-primary bg-primary px-6 text-[14px] font-label-caps uppercase text-white transition-colors hover:bg-transparent hover:text-primary leading-none" href="booking_the_hill_station_jos.html">Book Now</a>
+    </div>
+    <button class="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.remove('translate-x-full')">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+<div class="fixed inset-0 z-[60] flex translate-x-full flex-col overflow-y-auto bg-white p-margin-mobile text-[#181818] transition-transform duration-500 lg:hidden" id="mobile-nav" style="background-image: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)), url('assets/hill-station-brand-pattern-crop-greenbackground.png'); background-size: 560px auto; background-position: center;">
+  <div class="mb-10 flex items-center justify-between">
+    <a href="index.html" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[200px] h-auto" src="assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
+    <button class="inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full')">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <nav class="flex flex-none flex-col" aria-label="Mobile navigation">
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="index.html">Home</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="booking_the_hill_station_jos.html">Room</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="dining_the_hill_station_jos.html">Dining</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="meetings_events_the_hill_station_jos.html">Meeting &amp; Event</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="leisure.html">Leisure</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="contact_the_hill_station_jos_master_update.html">Contact Us</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="gallery_the_hill_station_jos.html">Gallery</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="about_us_the_hill_station_jos.html">About Us</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="estate_experiences_the_hill_station_jos.html">Hill Station Experiences</a>
+</nav>
+  <a class="mt-8 inline-flex h-14 items-center justify-center bg-primary px-6 font-label-caps text-[14px] uppercase text-on-primary" href="booking_the_hill_station_jos.html">Book Now</a>
+</div>
+<!-- Hero Section -->
+<header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-primary/40 z-10"></div>
+<img class="w-full h-full object-cover scale-105" data-alt="A grand, high-ceilinged dining room at The Hill Station Jos with expansive floor-to-ceiling windows overlooking the lush Jos Plateau mountains. The interior features elegant Forest Green velvet chairs and polished dark wood tables set with fine white porcelain and crystal glassware. Soft, warm sunlight filters through the mountain mist, creating a serene, timeless atmosphere of luxury hospitality." id="hero-img" src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.24 PM.jpeg"/>
+</div>
+<div class="hero-copy relative z-20 text-center px-margin-mobile max-w-4xl">
+<span class="font-label-caps text-label-caps text-tertiary-fixed mb-4 block tracking-[0.3em] opacity-0 translate-y-4 transition-all duration-1000 delay-300 animate-in">DINING & LOUNGES</span>
+<h1 class="hero-title-responsive font-display-lg text-display-lg text-on-primary mb-6 opacity-0 translate-y-4 transition-all duration-1000 delay-500 animate-in">Curated Dining</h1>
+<p class="font-body-lg text-body-lg text-surface-container-lowest max-w-2xl mx-auto opacity-0 translate-y-4 transition-all duration-1000 delay-700 animate-in">
+                From The Laundry Caf&eacute; to The Skyview Lounge, The Grand Terrace, and The Pool Bar, dining at The Hill Station is thoughtfully crafted around flavor, atmosphere, and the timeless art of gathering.
+            </p>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+<span class="material-symbols-outlined text-on-primary text-4xl">keyboard_arrow_down</span>
+</div>
+</header>
+<main>
+<!-- Venues: The Laundry Caf&eacute; -->
+<section class="pt-section-gap pb-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="grid md:grid-cols-12 items-center gap-gutter">
+<div class="md:col-span-7 relative group">
+<div class="aspect-[4/5] md:aspect-[16/10] overflow-hidden editorial-shadow relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="The Laundry Caf&eacute; at The Hill Station Jos" src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.25 PM.jpeg"/>
+</div>
+</div>
+<div class="md:col-span-5 md:pl-12 pt-8 md:pt-0">
+<span class="font-label-caps text-label-caps text-on-secondary-fixed-variant mb-4 block">01 / LAUNDRY CAF&Eacute;</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6">The Laundry Caf&eacute;</h3>
+<p class="font-body-md text-body-md text-secondary mb-8">
+                        Begin your day where the aroma of freshly baked sourdough fills the air and every cup is rich with heritage and crafted with care. The Laundry Caf&eacute; offers a welcoming retreat for slow mornings, casual meetings, and moments of quiet indulgence.
+                    </p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-4 font-label-caps text-label-caps text-primary">
+<span class="material-symbols-outlined text-outline">bakery_dining</span>
+                            Artisanal Pastries
+                        </li>
+<li class="flex items-center gap-4 font-label-caps text-label-caps text-primary">
+<span class="material-symbols-outlined text-outline">coffee</span>
+                            Single-Origin Brews
+                        </li>
+</ul>
+<a class="border border-primary text-primary px-8 py-3 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all" href="laundry_cafe_the_hill_station_jos.html">Learn More</a>
+</div>
+</div>
+</section>
+<!-- Venues: The Skyview Lounge -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white">
+<div class="grid md:grid-cols-12 items-center gap-gutter">
+<div class="md:col-span-5 order-2 md:order-1 pr-0 md:pr-12 py-8 md:py-0">
+<span class="font-label-caps text-label-caps text-on-secondary-fixed-variant mb-4 block">02 / SKYVIEW LOUNGE</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6">The Skyview Lounge</h3>
+<p class="font-body-md text-body-md text-secondary mb-8">
+                        Perched at the highest point of The Hill Station, The Skyview Lounge offers one of Jos's most captivating vantage points. With sweeping 270-degree views of Plateau, it is a place where conversations linger a little longer, and every sunset feels like a private performance. Whether enjoying handcrafted cocktails, light bites, or simply the cool highland breeze, The Skyview Lounge invites guests to experience Jos from a different perspective.
+                    </p>
+<a class="bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps hover:bg-primary-container transition-all" href="booking_the_hill_station_jos.html">Reserve a Table</a>
+</div>
+<div class="md:col-span-7 order-1 md:order-2">
+<div class="aspect-[4/3] overflow-hidden editorial-shadow">
+<img class="w-full h-full object-cover" alt="The Skyview Lounge at The Hill Station Jos" src="assets/Facilities/Gym and Pool Bar/rooftop_bar.jpg"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Venues: The Pool Bar -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white overflow-hidden">
+<div class="grid md:grid-cols-12 items-center gap-gutter">
+<div class="md:col-span-5 md:pr-12 pt-8 md:pt-0">
+<span class="font-label-caps text-label-caps text-on-secondary-fixed-variant mb-4 block">03 / POOL BAR</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6">The Pool Bar</h3>
+<p class="font-body-md text-body-md text-secondary mb-8">
+                        A relaxed and inviting setting designed for effortless connection. From freshly pressed juices and light refreshments to curated wines, premium spirits, and signature cocktails, The Pool Bar provides the perfect backdrop for casual gatherings, post-meeting conversations, and unhurried evenings. Comfortable, elegant, and distinctly Hill Station.
+                    </p>
+</div>
+<div class="md:col-span-7 relative group">
+<div class="aspect-[4/5] md:aspect-[16/10] overflow-hidden editorial-shadow">
+<img class="w-full h-full object-cover" alt="The Pool Bar at The Hill Station Jos" src="assets/Facilities/Gym and Pool Bar/pool_bar.png"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Venues: The Grand Terrace -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-primary-container text-on-primary-container">
+<div class="max-w-container-max mx-auto">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-primary-container/60 mb-4 block">04 / RESTAURANT</span>
+<h3 class="font-headline-lg text-headline-lg text-on-primary mb-8">The Grand Terrace</h3>
+<p class="font-body-lg text-body-lg mb-10 text-on-primary-container/80">
+                            Rooted in the spirit of hospitality that has defined The Hill Station for generations, The Grand Terrace offers a refined dining experience shaped by fresh ingredients, attentive service, and the relaxed sophistication of Plateau. Whether sharing a celebratory meal, hosting a business lunch, or enjoying an intimate evening, every table is set for meaningful moments.
+                        </p>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h4 class="font-label-caps text-label-caps text-tertiary-fixed mb-2">Dinner Hours</h4>
+<p class="font-body-md text-body-md">Daily 18:30 — 22:30</p>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-tertiary-fixed mb-2">Dress Code</h4>
+<p class="font-body-md text-body-md">Smart Casual</p>
+</div>
+</div>
+<a class="mt-10 inline-flex h-12 items-center border border-tertiary-fixed px-8 font-label-caps text-label-caps uppercase text-tertiary-fixed transition-colors hover:bg-tertiary-fixed hover:text-primary" href="restaurant_the_hill_station_jos.html">Learn More</a>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<img class="w-full aspect-[3/4] object-cover rounded-sm" data-alt="A close-up, high-end food photograph of a gourmet dish featuring local Jos root vegetables, artfully arranged with micro-greens and a delicate sauce drizzle on a dark ceramic plate. The lighting is moody and dramatic, focusing on the textures and vibrant colors of the food, set against a dark tablecloth in a high-end restaurant setting." src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.43.51 AM (2).jpeg"/>
+<img class="w-full aspect-square object-cover rounded-sm" data-alt="A beautifully prepared platter of local Nigerian artisanal cheeses and honey, accompanied by grilled sourdough bread. The setting is a refined dinner table with candlelight reflecting off crystal wine glasses, creating a warm, inviting, and luxurious dining ambiance." src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.45.23 AM.jpeg"/>
+</div>
+<div class="pt-12 space-y-4">
+<img class="w-full aspect-square object-cover rounded-sm" data-alt="An elegant waiter pouring a deep red wine into a large glass in a dimly lit, sophisticated restaurant interior. The background shows blurred warm lights and the outlines of other guests, emphasizing the exclusive and intimate fine dining experience at The Hill Station Jos." src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.45.24 AM.jpeg"/>
+<img class="w-full aspect-[3/4] object-cover rounded-sm" data-alt="A perfectly plated seafood dish with vibrant seasonal garnish, served on a bespoke stone plate. The image captures the high-level craftsmanship of the culinary team at The Hill Station, with soft bokeh lighting and a focus on organic, natural ingredients." src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.45.24 AM (1).jpeg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reservation CTA -->
+<section class="relative py-section-gap px-margin-mobile flex flex-col items-center justify-center text-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-10" data-alt="A subtle, high-key background image of a perfectly set table with a white linen tablecloth and a single wildflower in a glass vase, capturing the essence of the luxury of space and the quiet elegance of The Hill Station's dining environment." src="assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.45.24 AM (2).jpeg"/>
+</div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Experience the Plateau</h2>
+<p class="font-body-lg text-body-lg text-secondary mb-10">
+                    Secure your table for an unforgettable evening. For large groups and private events, please contact our concierge.
+                </p>
+<form class="w-full max-w-lg mx-auto space-y-8">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="text-left">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2">SELECT VENUE</label>
+<select class="w-full border-0 border-b border-primary bg-transparent py-2 focus:ring-0 focus:border-tertiary-fixed font-body-md">
+<option>The Grand Terrace</option>
+<option>The Skyview Lounge</option>
+<option>The Laundry Caf&eacute;</option>
+<option>The Pool Bar</option>
+</select>
+</div>
+<div class="text-left">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2">DATE</label>
+<input class="w-full border-0 border-b border-primary bg-transparent py-2 focus:ring-0 focus:border-tertiary-fixed font-body-md" type="date"/>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps tracking-widest hover:tracking-[0.2em] transition-all duration-500" type="submit">REQUEST RESERVATION</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Site Footer -->
+<footer class="bg-primary text-on-primary" style="background-image: linear-gradient(rgba(30, 61, 49, 0.94), rgba(30, 61, 49, 0.94)), url('assets/hill-station-brand-pattern-crop-greenbackground.png'); background-size: cover; background-position: center;">
+  <div class="mx-auto grid max-w-container-max grid-cols-1 gap-12 px-margin-mobile py-20 md:grid-cols-12 md:px-margin-desktop">
+    <div class="md:col-span-4">
+      <a href="index.html" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[180px] md:w-[200px] h-auto" src="assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
+      <p class="mt-8 max-w-sm font-body-md text-body-md text-on-primary/75">Where Comfort Meets Adventure in the cool highlands of Jos, Plateau State.</p>
+    </div>
+    <div class="md:col-span-3">
+      <h4 class="mb-6 font-label-caps text-[13px] uppercase text-secondary leading-none">Explore</h4>
+      <div class="flex flex-col gap-4 font-body-md text-body-md">
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="index.html">Home</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="booking_the_hill_station_jos.html">Room</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="facilities_the_hill_station_jos_master_update.html">Amenities</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="dining_the_hill_station_jos.html">Dining</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="meetings_events_the_hill_station_jos.html">Meeting &amp; Event</a>
+      </div>
+    </div>
+    <div class="md:col-span-2">
+      <h4 class="mb-6 font-label-caps text-[13px] uppercase text-secondary leading-none">Company</h4>
+      <div class="flex flex-col gap-4 font-body-md text-body-md">
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="about_us_the_hill_station_jos.html">About Us</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="contact_the_hill_station_jos_master_update.html">Contact Us</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="gallery_the_hill_station_jos.html">Gallery</a>
+        <a class="text-on-primary/75 transition-colors hover:text-secondary" href="booking_the_hill_station_jos.html">Book Now</a>
+      </div>
+    </div>
+    <div class="md:col-span-3">
+      <h4 class="mb-6 font-label-caps text-[13px] uppercase text-secondary leading-none">Contact</h4>
+      <div class="space-y-3 font-body-md text-body-md text-on-primary/75">
+        <p>10 Tudun Wada Road, Jos, Plateau State, Nigeria.</p>
+        <p><a class="hover:text-secondary" href="mailto:reservations@hillstationjos.com">reservations@hillstationjos.com</a></p>
+        <p><a class="hover:text-secondary" href="tel:07014493026">07014493026</a></p>
+      </div>
+      <div class="mt-8">
+        <img alt="Hillside Credentials" class="h-auto w-[140px] md:w-[160px]" src="assets/HILL STATION LOGO/HILLSIDE_LOGO_FULL COLOUR.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-on-primary/10 px-margin-mobile py-6 md:px-margin-desktop">
+    <div class="mx-auto flex max-w-container-max flex-col gap-4 font-body-md text-sm text-on-primary/55 md:flex-row md:items-center md:justify-between">
+      <p>© 2024 The Hill Station Jos. All Rights Reserved.</p>
+      <div class="flex gap-6">
+        <a class="hover:text-secondary" href="#">Privacy Policy</a>
+        <a class="hover:text-secondary" href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero Animation
+            const elements = document.querySelectorAll('.animate-in');
+            elements.forEach(el => {
+                el.classList.remove('opacity-0', 'translate-y-4');
+            });
+
+            // Scroll Effect for Nav
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('py-2', 'shadow-sm');
+                } else {
+                    nav.classList.remove('py-2', 'shadow-sm');
+                }
+            });
+
+            // Subtle parallax effect on hero
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const heroImg = document.querySelector('#hero-img');
+                if (heroImg) {
+                    heroImg.style.transform = `scale(1.05) translateY(${scrolled * 0.1}px)`;
+                }
+            });
+        });
+    </script>
+</body></html>
