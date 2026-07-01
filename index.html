@@ -30,24 +30,36 @@
             transform: scale(1);
             pointer-events: auto;
         }
+        #room-hero-slider {
+            min-height: 100svh;
+            height: 100svh;
+        }
+        .room-hero-slide {
+            height: 100%;
+            min-height: 100svh;
+            overflow: hidden;
+        }
         .hero-glass-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.28);
             border-radius: 0.125rem;
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            max-width: 17.5rem;
+            width: 100%;
         }
         @media (min-width: 768px) {
             .hero-glass-panel {
-                padding: 2rem;
+                padding: 1.5rem 1.75rem;
+                max-width: 19rem;
             }
         }
         .lifestyle-glass-caption {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 0.125rem;
         }
         .about-hero-slide {
@@ -55,6 +67,17 @@
             background-image: linear-gradient(rgba(30, 61, 49, 0.94), rgba(30, 61, 49, 0.94)), url('assets/hill-station-brand-pattern-crop-greenbackground.png');
             background-size: cover;
             background-position: center;
+        }
+        .about-hero-slide .logo-window {
+            max-width: min(100%, 460px);
+        }
+        @media (min-width: 1024px) {
+            .about-hero-slide .logo-window {
+                transform: none;
+            }
+        }
+        .about-hero-slide .hero-visual {
+            overflow: hidden;
         }
         .room-hero-copy {
             opacity: 0;
@@ -347,7 +370,7 @@
     <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="dining_the_hill_station_jos.html">Dining</a>
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="meetings_events_the_hill_station_jos.html">Meeting &amp; Event</a>
-      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="leisure.html">Leisure</a>
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="leisure.html">Wellness</a>
     </div>
   </div>
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="contact_the_hill_station_jos_master_update.html">Contact Us</a>
@@ -393,18 +416,14 @@
 <section class="relative min-h-[100svh] w-full overflow-hidden bg-primary text-on-primary" id="room-hero-slider" aria-label="Featured highlights">
 <div class="room-hero-slide about-hero-slide is-active absolute inset-0" data-room-slide>
 <div class="absolute inset-0" style="background: radial-gradient(circle at 78% 22%, rgba(168,135,80,0.24), transparent 34%), linear-gradient(110deg, rgba(24,24,24,0.18), transparent 52%);"></div>
-<div class="relative z-10 mx-auto grid min-h-full max-w-container-max grid-cols-1 items-center gap-2 px-margin-mobile pb-28 pt-36 md:min-h-full md:gap-3 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid-cols-12 lg:gap-gutter">
+<div class="relative z-10 mx-auto flex h-full min-h-0 max-w-container-max flex-col justify-center gap-4 px-margin-mobile pb-28 pt-36 md:gap-6 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid lg:grid-cols-12 lg:items-center lg:gap-gutter">
 <div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white leading-tight md:text-display-lg">A Plateau Icon, Restored for Today</h1>
 <p class="mb-10 max-w-xl font-body-lg text-body-lg text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
-<div class="flex flex-col gap-4 sm:flex-row">
-<a class="bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="booking_the_hill_station_jos.html">Book Your Stay</a>
-<a class="border border-secondary/70 px-8 py-4 font-label-caps text-label-caps text-secondary transition-all hover:bg-secondary hover:text-primary" href="meetings_events_the_hill_station_jos.html">View Corporate Services</a>
-</div>
+<a class="inline-flex bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="booking_the_hill_station_jos.html">Book Your Stay</a>
 </div>
 <div class="hero-visual relative order-1 lg:order-2 lg:col-span-7">
 <div class="absolute -left-6 top-8 hidden h-28 w-28 border-l border-t border-secondary/30 md:block"></div>
-<div class="absolute -right-10 -bottom-2 hidden h-32 w-32 border-b border-r border-secondary/30 md:block"></div>
 <div class="logo-window relative z-10 mx-auto w-full" role="img" aria-label="The Hill Station logo window filled with hotel photography">
 <img alt="" aria-hidden="true" class="logo-window-segment segment-main" src="assets/logo-window/segment-photo-1.webp"/>
 <img alt="" aria-hidden="true" class="logo-window-segment segment-left-top" src="assets/logo-window/segment-photo-2.webp"/>
@@ -418,7 +437,7 @@
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Suites" class="h-full w-full object-cover" src="assets/rooms/Hillstation Suit/SUITE HILLSTATION HOTEL DESIGN_page-0003.jpg"/>
 <div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
-<div class="room-hero-copy hero-glass-panel max-w-2xl">
+<div class="room-hero-copy hero-glass-panel">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Suites</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
@@ -434,7 +453,7 @@
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Deluxe" class="h-full w-full object-cover" src="assets/rooms/Hillstation Delux/HILLSTATION DELUX ROOM DESIGN_page-0006.jpg"/>
 <div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
-<div class="room-hero-copy hero-glass-panel max-w-2xl">
+<div class="room-hero-copy hero-glass-panel">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Deluxe</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
@@ -450,7 +469,7 @@
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Standard" class="h-full w-full object-cover" src="assets/rooms/Skylark Standard/skylark standard room-IWW design_page-0003.jpg"/>
 <div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
-<div class="room-hero-copy hero-glass-panel max-w-2xl">
+<div class="room-hero-copy hero-glass-panel">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Standard</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
@@ -463,7 +482,7 @@
 </div>
 </div>
 </div>
-<div class="absolute bottom-8 right-margin-mobile z-20 flex items-center gap-2 md:bottom-10 md:right-margin-desktop">
+<div class="absolute bottom-8 left-margin-mobile z-20 flex items-center gap-2 md:bottom-10 md:left-margin-desktop">
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-prev aria-label="Previous room">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
@@ -694,7 +713,7 @@
 </div>
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">call</span>
-<p class="font-body-md text-body-md text-on-surface">07014493026</p>
+<p class="font-body-md text-body-md text-on-surface"><a class="hover:text-primary" href="tel:+2347014493026">+234 701 449 3026</a></p>
 </div>
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">mail</span>
@@ -742,10 +761,12 @@
       <div class="space-y-3 font-body-md text-body-md text-on-primary/75">
         <p>10 Tudun Wada Road, Jos, Plateau State, Nigeria.</p>
         <p><a class="hover:text-secondary" href="mailto:reservations@hillstationjos.com">reservations@hillstationjos.com</a></p>
-        <p><a class="hover:text-secondary" href="tel:07014493026">07014493026</a></p>
+        <p><a class="hover:text-secondary" href="tel:+2347014493026">+234 701 449 3026</a></p>
       </div>
-      <div class="mt-8">
-        <img alt="Hillside Credentials" class="h-auto w-[140px] md:w-[160px]" src="assets/HILL STATION LOGO/HILLSIDE_LOGO_FULL COLOUR.png"/>
+      <div class="mt-8 flex max-w-sm items-stretch gap-3 border border-on-primary/25 p-3 md:max-w-md md:gap-4 md:p-4">
+        <p class="flex w-[7rem] shrink-0 items-center font-label-caps text-[10px] uppercase leading-snug text-on-primary/70 md:w-[8.5rem] md:text-[11px]">Curated Experiences Managed by</p>
+        <span class="w-px shrink-0 self-stretch bg-on-primary/20" aria-hidden="true"></span>
+        <img alt="Hillside Credentials" class="h-auto max-h-14 w-auto max-w-[11rem] flex-1 object-contain object-right md:max-h-16 md:max-w-[13rem]" src="assets/HILL STATION LOGO/HILLSIDE_LOGO_FULL COLOUR.png"/>
       </div>
     </div>
   </div>
