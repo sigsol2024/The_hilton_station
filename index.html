@@ -79,6 +79,21 @@
         .about-hero-slide .hero-visual {
             overflow: hidden;
         }
+        .room-slide-title {
+            font-size: 26px;
+            line-height: 1.16;
+            font-weight: 400;
+        }
+        @media (min-width: 768px) {
+            .room-slide-title {
+                font-size: 32px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .room-slide-title {
+                font-size: 36px;
+            }
+        }
         .room-hero-copy {
             opacity: 0;
             transform: translateY(18px);
@@ -420,7 +435,7 @@
 <div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white leading-tight md:text-display-lg">A Plateau Icon, Restored for Today</h1>
 <p class="mb-10 max-w-xl font-body-lg text-body-lg text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
-<a class="inline-flex bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="booking_the_hill_station_jos.html">Book Your Stay</a>
+<a class="inline-flex bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="#" data-view-rooms>View Rooms</a>
 </div>
 <div class="hero-visual relative order-1 lg:order-2 lg:col-span-7">
 <div class="absolute -left-6 top-8 hidden h-28 w-28 border-l border-t border-secondary/30 md:block"></div>
@@ -439,7 +454,7 @@
 <div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
 <div class="room-hero-copy hero-glass-panel">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
-<h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Suites</h1>
+<h1 class="room-slide-title font-display-lg mb-4 text-white">Hill Station Suites</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
 <div class="mb-8 flex flex-wrap gap-5 text-white/85">
 <span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Suite</span>
@@ -455,7 +470,7 @@
 <div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
 <div class="room-hero-copy hero-glass-panel">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
-<h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Deluxe</h1>
+<h1 class="room-slide-title font-display-lg mb-4 text-white">Hill Station Deluxe</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
 <div class="mb-8 flex flex-wrap gap-5 text-white/85">
 <span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Deluxe room</span>
@@ -471,7 +486,7 @@
 <div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
 <div class="room-hero-copy hero-glass-panel">
 <span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
-<h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white md:text-display-lg">Hill Station Standard</h1>
+<h1 class="room-slide-title font-display-lg mb-4 text-white">Hill Station Standard</h1>
 <p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
 <div class="mb-8 flex flex-wrap gap-5 text-white/85">
 <span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Standard room</span>
@@ -482,7 +497,7 @@
 </div>
 </div>
 </div>
-<div class="absolute bottom-8 left-margin-mobile z-20 flex items-center gap-2 md:bottom-10 md:left-margin-desktop">
+<div class="absolute bottom-8 right-margin-mobile z-20 hidden items-center gap-2 md:bottom-10 md:right-margin-desktop" data-room-nav>
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-prev aria-label="Previous room">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
@@ -787,17 +802,27 @@
       const slides = Array.from(roomHero.querySelectorAll('[data-room-slide]'));
       const previousButton = roomHero.querySelector('[data-room-prev]');
       const nextButton = roomHero.querySelector('[data-room-next]');
+      const roomNav = roomHero.querySelector('[data-room-nav]');
+      const viewRoomsButton = roomHero.querySelector('[data-view-rooms]');
       let currentRoomSlide = 0;
       let roomAutoplay;
+
+      const updateRoomNav = () => {
+        if (!roomNav) return;
+        roomNav.classList.toggle('hidden', currentRoomSlide === 0);
+        roomNav.classList.toggle('flex', currentRoomSlide !== 0);
+      };
 
       const showRoomSlide = (nextIndex) => {
         slides[currentRoomSlide].classList.remove('is-active');
         currentRoomSlide = (nextIndex + slides.length) % slides.length;
         slides[currentRoomSlide].classList.add('is-active');
+        updateRoomNav();
       };
 
       const restartRoomAutoplay = () => {
         window.clearInterval(roomAutoplay);
+        if (currentRoomSlide === 0) return;
         roomAutoplay = window.setInterval(() => showRoomSlide(currentRoomSlide + 1), 6000);
       };
 
@@ -811,7 +836,15 @@
         restartRoomAutoplay();
       });
 
-      restartRoomAutoplay();
+      if (viewRoomsButton) {
+        viewRoomsButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          showRoomSlide(1);
+          restartRoomAutoplay();
+        });
+      }
+
+      updateRoomNav();
     }
 
     document.querySelectorAll('.lifestyle-slider').forEach((slider) => {
