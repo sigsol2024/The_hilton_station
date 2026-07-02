@@ -46,10 +46,10 @@
             overflow: hidden;
         }
         .hero-glass-panel {
-            background: rgba(255, 255, 255, 0.16);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.28);
+            background: rgba(24, 36, 32, 0.58);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             border-radius: 0.125rem;
             padding: 1.25rem 1.5rem;
             max-width: 17.5rem;
@@ -91,10 +91,10 @@
             flex-shrink: 0;
         }
         .lifestyle-glass-caption {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(24, 36, 32, 0.52);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0.125rem;
         }
         .about-hero-slide {
@@ -115,13 +115,13 @@
             overflow: hidden;
         }
         .room-slide-panel-wrap {
-            top: 6.5rem;
-            bottom: 5.5rem;
+            top: 9rem;
+            bottom: 3rem;
         }
         @media (min-width: 768px) {
             .room-slide-panel-wrap {
-                top: 7rem;
-                bottom: 6rem;
+                top: 9.5rem;
+                bottom: 3.5rem;
             }
         }
         .room-slide-title {
@@ -231,15 +231,14 @@
             }
             .about-hero-slide {
                 overflow-x: hidden;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
+                overflow-y: hidden;
             }
             .about-hero-slide .about-hero-inner {
                 height: auto;
                 min-height: 100%;
                 justify-content: flex-start;
                 padding-top: 6.25rem;
-                padding-bottom: 5.5rem;
+                padding-bottom: 2rem;
                 gap: 0.75rem;
             }
             .about-hero-slide .hero-visual {
@@ -256,7 +255,7 @@
                 max-width: min(85vw, 320px);
             }
             .about-hero-slide .hero-copy .mb-10 {
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.25rem;
             }
         }
         @media (min-width: 768px) and (max-width: 1199px) {
@@ -511,7 +510,17 @@
 <div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
 <h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white leading-tight md:text-display-lg">A Plateau Icon, Restored for Today</h1>
 <p class="mb-10 max-w-xl font-body-lg text-body-lg text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
-<a class="inline-flex bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="#" data-view-rooms>View Our Rooms</a>
+<div class="intro-cta-row flex items-center justify-between gap-3">
+<a class="inline-flex shrink-0 bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="#" data-view-rooms>View Our Rooms</a>
+<div class="flex shrink-0 items-center gap-2 md:hidden" data-room-nav-inline aria-label="Slider navigation">
+<button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-prev aria-label="Previous slide">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-next aria-label="Next slide">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
 </div>
 <div class="hero-visual relative order-1 lg:order-2 lg:col-span-7">
 <div class="absolute -left-6 top-8 hidden h-28 w-28 border-l border-t border-secondary/30 md:block"></div>
@@ -573,7 +582,7 @@
 </div>
 </div>
 </div>
-<div class="absolute bottom-8 right-margin-mobile z-20 flex items-center gap-2 md:bottom-10 md:right-margin-desktop" data-room-nav>
+<div class="absolute bottom-8 right-margin-mobile z-20 hidden items-center gap-2 md:bottom-10 md:right-margin-desktop" data-room-nav>
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-prev aria-label="Previous room">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
@@ -888,9 +897,10 @@
     const roomHero = document.getElementById('room-hero-slider');
     if (roomHero) {
       const slides = Array.from(roomHero.querySelectorAll('[data-room-slide]'));
-      const previousButton = roomHero.querySelector('[data-room-prev]');
-      const nextButton = roomHero.querySelector('[data-room-next]');
+      const previousButtons = Array.from(roomHero.querySelectorAll('[data-room-prev]'));
+      const nextButtons = Array.from(roomHero.querySelectorAll('[data-room-next]'));
       const roomNav = roomHero.querySelector('[data-room-nav]');
+      const roomNavInline = roomHero.querySelector('[data-room-nav-inline]');
       const viewRoomsButton = roomHero.querySelector('[data-view-rooms]');
       let currentRoomSlide = 0;
       let roomAutoplay;
@@ -899,11 +909,22 @@
       let isDragging = false;
       const swipeThreshold = 50;
       const swipeMaxVertical = 72;
+      const mobileMedia = window.matchMedia('(max-width: 767px)');
 
       const updateRoomNav = () => {
-        if (!roomNav) return;
-        roomNav.classList.remove('hidden');
-        roomNav.classList.add('flex');
+        const isIntro = currentRoomSlide === 0;
+        const isMobile = mobileMedia.matches;
+
+        if (roomNavInline) {
+          roomNavInline.classList.toggle('hidden', !isMobile || !isIntro);
+          roomNavInline.classList.toggle('flex', isMobile && isIntro);
+        }
+
+        if (roomNav) {
+          const showFloating = !isMobile || !isIntro;
+          roomNav.classList.toggle('hidden', !showFloating);
+          roomNav.classList.toggle('flex', showFloating);
+        }
       };
 
       const showRoomSlide = (nextIndex) => {
@@ -953,15 +974,21 @@
         roomHero.classList.remove('is-dragging');
       });
 
-      previousButton.addEventListener('click', () => {
-        showRoomSlide(currentRoomSlide - 1);
-        restartRoomAutoplay();
+      previousButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          showRoomSlide(currentRoomSlide - 1);
+          restartRoomAutoplay();
+        });
       });
 
-      nextButton.addEventListener('click', () => {
-        showRoomSlide(currentRoomSlide + 1);
-        restartRoomAutoplay();
+      nextButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          showRoomSlide(currentRoomSlide + 1);
+          restartRoomAutoplay();
+        });
       });
+
+      mobileMedia.addEventListener('change', updateRoomNav);
 
       if (viewRoomsButton) {
         viewRoomsButton.addEventListener('click', (event) => {
