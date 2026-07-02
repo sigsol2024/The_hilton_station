@@ -230,11 +230,14 @@
         @media (max-width: 767px) {
             #room-hero-slider {
                 min-height: 100svh;
+                max-width: 100%;
+                overflow-x: hidden;
             }
             #room-hero-slider.is-intro-active {
                 height: auto;
                 min-height: 100svh;
-                overflow: visible;
+                overflow-x: hidden;
+                overflow-y: visible;
             }
             #room-hero-slider:not(.is-intro-active) {
                 height: 100svh;
@@ -244,7 +247,8 @@
                 inset: auto;
                 min-height: 100svh;
                 height: auto;
-                overflow: visible;
+                overflow-x: hidden;
+                overflow-y: visible;
             }
             #room-hero-slider.is-intro-active .about-hero-slide:not(.is-active) {
                 position: absolute;
@@ -252,12 +256,14 @@
             }
             .hero-glass-panel {
                 min-height: 0;
+                max-width: 100%;
             }
             .room-slide-panel-wrap {
-                top: 7rem;
-                bottom: 6.5rem;
+                top: 0;
+                bottom: 0;
                 align-items: flex-start;
-                padding-top: 1rem;
+                padding-top: calc(6.25rem + min(85vw, 320px) * 0.8 + 0.75rem);
+                padding-bottom: 2.5rem;
             }
             .logo-window {
                 aspect-ratio: 1.25 / 1;
@@ -276,6 +282,8 @@
             .about-hero-slide .about-hero-inner {
                 height: auto;
                 min-height: 0;
+                max-width: 100%;
+                overflow-x: hidden;
                 justify-content: flex-start;
                 padding-top: 6.25rem;
                 padding-bottom: 2.5rem;
@@ -283,16 +291,30 @@
             }
             .about-hero-slide .hero-visual {
                 flex-shrink: 0;
-                overflow: visible;
+                overflow: hidden;
                 padding-top: 0;
                 width: 100%;
+                max-width: 100%;
+            }
+            .about-hero-slide .logo-window {
+                max-width: min(85vw, 320px);
+                margin-inline: auto;
+            }
+            .intro-cta-row {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+            }
+            .intro-cta-row > a {
+                min-width: 0;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
             }
             .about-hero-slide .hero-copy.order-2 {
                 flex-shrink: 0;
                 padding-top: 0 !important;
-            }
-            .about-hero-slide .logo-window {
-                max-width: min(85vw, 320px);
+                width: 100%;
+                max-width: 100%;
             }
             .about-hero-slide .hero-copy .mb-10,
             .about-hero-slide .hero-copy .mb-6 {
@@ -547,13 +569,13 @@
 <section class="relative min-h-[100svh] w-full overflow-hidden bg-primary text-on-primary" id="room-hero-slider" aria-label="Featured highlights">
 <div class="room-hero-slide about-hero-slide is-active absolute inset-0" data-room-slide>
 <div class="absolute inset-0" style="background: radial-gradient(circle at 78% 22%, rgba(168,135,80,0.24), transparent 34%), linear-gradient(110deg, rgba(24,24,24,0.18), transparent 52%);"></div>
-<div class="about-hero-inner relative z-10 mx-auto flex h-full min-h-0 max-w-container-max flex-col justify-center gap-4 px-margin-mobile pb-28 pt-36 md:gap-6 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid lg:grid-cols-12 lg:items-center lg:gap-gutter">
+<div class="about-hero-inner relative z-10 mx-auto flex h-full min-h-0 max-w-container-max flex-col justify-center gap-4 px-margin-mobile max-md:pb-0 max-md:pt-0 pb-28 pt-36 md:gap-6 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid lg:grid-cols-12 lg:items-center lg:gap-gutter">
 <div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
 <h1 class="room-slide-title font-display-lg mb-3">A Plateau Icon, Restored for Today</h1>
 <p class="intro-slide-desc mb-6 max-w-xl text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
 <div class="intro-cta-row flex items-center justify-between gap-3">
 <a class="inline-flex shrink-0 bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="booking_the_hill_station_jos.html">View Our Rooms</a>
-<div class="flex shrink-0 items-center gap-2 md:hidden ml-6" data-room-nav-inline aria-label="Slider navigation">
+<div class="flex shrink-0 items-center gap-2 md:hidden ml-3" data-room-nav-inline aria-label="Slider navigation">
 <button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-prev aria-label="Previous slide">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
