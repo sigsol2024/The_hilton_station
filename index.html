@@ -124,6 +124,15 @@
                 bottom: 3.5rem;
             }
         }
+        .intro-slide-desc {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        @media (min-width: 768px) {
+            .intro-slide-desc {
+                font-size: 18px;
+            }
+        }
         .room-slide-title {
             font-size: 24px;
             line-height: 1.16;
@@ -285,7 +294,8 @@
             .about-hero-slide .logo-window {
                 max-width: min(85vw, 320px);
             }
-            .about-hero-slide .hero-copy .mb-10 {
+            .about-hero-slide .hero-copy .mb-10,
+            .about-hero-slide .hero-copy .mb-6 {
                 margin-bottom: 1.25rem;
             }
         }
@@ -539,10 +549,10 @@
 <div class="absolute inset-0" style="background: radial-gradient(circle at 78% 22%, rgba(168,135,80,0.24), transparent 34%), linear-gradient(110deg, rgba(24,24,24,0.18), transparent 52%);"></div>
 <div class="about-hero-inner relative z-10 mx-auto flex h-full min-h-0 max-w-container-max flex-col justify-center gap-4 px-margin-mobile pb-28 pt-36 md:gap-6 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid lg:grid-cols-12 lg:items-center lg:gap-gutter">
 <div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
-<h1 class="hero-title-responsive font-display-lg mobile-hero-title mb-6 text-white leading-tight md:text-display-lg">A Plateau Icon, Restored for Today</h1>
-<p class="mb-10 max-w-xl font-body-lg text-body-lg text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
+<h1 class="room-slide-title font-display-lg mb-3">A Plateau Icon, Restored for Today</h1>
+<p class="intro-slide-desc mb-6 max-w-xl text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
 <div class="intro-cta-row flex items-center justify-between gap-3">
-<a class="inline-flex shrink-0 bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="#" data-view-rooms>View Our Rooms</a>
+<a class="inline-flex shrink-0 bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="booking_the_hill_station_jos.html">View Our Rooms</a>
 <div class="flex shrink-0 items-center gap-2 md:hidden ml-6" data-room-nav-inline aria-label="Slider navigation">
 <button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-prev aria-label="Previous slide">
 <span class="material-symbols-outlined">arrow_back</span>
@@ -932,7 +942,6 @@
       const nextButtons = Array.from(roomHero.querySelectorAll('[data-room-next]'));
       const roomNav = roomHero.querySelector('[data-room-nav]');
       const roomNavInline = roomHero.querySelector('[data-room-nav-inline]');
-      const viewRoomsButton = roomHero.querySelector('[data-view-rooms]');
       let currentRoomSlide = 0;
       let roomAutoplay;
       let pointerStartX = 0;
@@ -1022,14 +1031,6 @@
       });
 
       mobileMedia.addEventListener('change', updateRoomNav);
-
-      if (viewRoomsButton) {
-        viewRoomsButton.addEventListener('click', (event) => {
-          event.preventDefault();
-          showRoomSlide(1);
-          restartRoomAutoplay();
-        });
-      }
 
       updateRoomNav();
     }
