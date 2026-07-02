@@ -48,12 +48,26 @@
             padding: 1.25rem 1.5rem;
             max-width: 17.5rem;
             width: 100%;
+            height: 21.5rem;
+            min-height: 21.5rem;
+            max-height: 21.5rem;
+            display: flex;
+            flex-direction: column;
         }
         @media (min-width: 768px) {
             .hero-glass-panel {
                 padding: 1.5rem 1.75rem;
                 max-width: 19rem;
+                height: 22rem;
+                min-height: 22rem;
+                max-height: 22rem;
             }
+        }
+        .room-slide-desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .lifestyle-glass-caption {
             background: rgba(255, 255, 255, 0.1);
@@ -452,49 +466,49 @@
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Suites" class="h-full w-full object-cover" src="assets/rooms/Hillstation Suit/SUITE HILLSTATION HOTEL DESIGN_page-0003.jpg"/>
-<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
+<div class="absolute inset-x-0 top-0 bottom-0 flex items-center px-margin-mobile py-28 md:px-margin-desktop md:py-32">
 <div class="room-hero-copy hero-glass-panel">
-<span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
-<h1 class="room-slide-title font-display-lg mb-4">Hill Station Suites</h1>
-<p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
-<div class="mb-8 flex flex-wrap gap-5 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Suite</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">shower</span>Private Bath</span>
+<span class="mb-4 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
+<h1 class="room-slide-title font-display-lg mb-3">Hill Station Suites</h1>
+<p class="room-slide-desc mb-4 font-body-lg text-body-lg text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
+<div class="mb-6 flex flex-wrap gap-5 text-white/85">
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">hotel</span>Suite</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">wifi</span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">shower</span>Private Bath</span>
 </div>
-<a class="inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_hillstation_suit.html">View Room</a>
+<a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_hillstation_suit.html">View Room</a>
 </div>
 </div>
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Deluxe" class="h-full w-full object-cover" src="assets/rooms/Hillstation Delux/HILLSTATION DELUX ROOM DESIGN_page-0006.jpg"/>
-<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
+<div class="absolute inset-x-0 top-0 bottom-0 flex items-center px-margin-mobile py-28 md:px-margin-desktop md:py-32">
 <div class="room-hero-copy hero-glass-panel">
-<span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
-<h1 class="room-slide-title font-display-lg mb-4">Hill Station Deluxe</h1>
-<p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
-<div class="mb-8 flex flex-wrap gap-5 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Deluxe room</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">shower</span>Private Bath</span>
+<span class="mb-4 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
+<h1 class="room-slide-title font-display-lg mb-3">Hill Station Deluxe</h1>
+<p class="room-slide-desc mb-4 font-body-lg text-body-lg text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
+<div class="mb-6 flex flex-wrap gap-5 text-white/85">
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">hotel</span>Deluxe room</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">wifi</span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">shower</span>Private Bath</span>
 </div>
-<a class="inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_hillstation_delux.html">View Room</a>
+<a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_hillstation_delux.html">View Room</a>
 </div>
 </div>
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Standard" class="h-full w-full object-cover" src="assets/rooms/Skylark Standard/skylark standard room-IWW design_page-0003.jpg"/>
-<div class="absolute inset-x-0 bottom-0 top-0 flex items-end px-margin-mobile pb-28 pt-36 md:items-center md:px-margin-desktop md:pb-32 md:pt-40">
+<div class="absolute inset-x-0 top-0 bottom-0 flex items-center px-margin-mobile py-28 md:px-margin-desktop md:py-32">
 <div class="room-hero-copy hero-glass-panel">
-<span class="mb-5 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
-<h1 class="room-slide-title font-display-lg mb-4">Hill Station Standard</h1>
-<p class="mb-6 max-w-xl font-body-lg text-body-lg text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
-<div class="mb-8 flex flex-wrap gap-5 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Standard room</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">shower</span>Private Bath</span>
+<span class="mb-4 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
+<h1 class="room-slide-title font-display-lg mb-3">Hill Station Standard</h1>
+<p class="room-slide-desc mb-4 font-body-lg text-body-lg text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
+<div class="mb-6 flex flex-wrap gap-5 text-white/85">
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">hotel</span>Standard room</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">wifi</span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">shower</span>Private Bath</span>
 </div>
-<a class="inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_skylark_standard.html">View Room</a>
+<a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_skylark_standard.html">View Room</a>
 </div>
 </div>
 </div>
@@ -785,10 +799,14 @@
       </div>
       <div class="mt-8 w-full min-w-0">
         <div class="flex w-full min-w-0 items-stretch gap-2.5 border border-primary/45 p-3 md:gap-3 md:p-3.5">
-          <p class="flex w-[6.25rem] shrink-0 items-center font-label-caps text-[9px] uppercase leading-snug text-on-primary/70 md:w-[7.25rem] md:text-[10px]">Curated Experiences Managed by</p>
+          <p class="flex w-[3.5rem] shrink-0 flex-col justify-center gap-0.5 font-label-caps text-[9px] uppercase leading-tight text-on-primary/70 md:w-[4rem] md:text-[10px]">
+            <span>Curated</span>
+            <span>Experiences</span>
+            <span>Managed by</span>
+          </p>
           <span class="w-px shrink-0 self-stretch bg-primary/35" aria-hidden="true"></span>
-          <div class="flex min-w-0 flex-1 items-center justify-end overflow-hidden">
-            <img alt="Hillside Credentials" class="h-auto max-h-12 w-auto max-w-full object-contain object-right md:max-h-14" src="assets/HILL STATION LOGO/HILLSIDE_LOGO_FULL COLOUR.png"/>
+          <div class="flex min-w-0 flex-[1.2] items-center justify-end overflow-hidden">
+            <img alt="Hillside Credentials" class="h-auto max-h-[3.35rem] w-auto max-w-full object-contain object-right md:max-h-[3.85rem]" src="assets/HILL STATION LOGO/HILLSIDE_LOGO_FULL COLOUR.png"/>
           </div>
         </div>
       </div>
