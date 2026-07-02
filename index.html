@@ -33,6 +33,12 @@
         #room-hero-slider {
             min-height: 100svh;
             height: 100svh;
+            touch-action: pan-y pinch-zoom;
+            cursor: grab;
+        }
+        #room-hero-slider.is-dragging {
+            cursor: grabbing;
+            user-select: none;
         }
         .room-hero-slide {
             height: 100%;
@@ -108,13 +114,21 @@
         .about-hero-slide .hero-visual {
             overflow: hidden;
         }
+        .room-slide-panel-wrap {
+            top: 6.5rem;
+            bottom: 5.5rem;
+        }
+        @media (min-width: 768px) {
+            .room-slide-panel-wrap {
+                top: 7rem;
+                bottom: 6rem;
+            }
+        }
         .room-slide-title {
             font-size: 24px;
             line-height: 1.16;
             font-weight: 400;
-            color: #1E3D31;
-            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.85);
-            paint-order: stroke fill;
+            color: #ffffff;
         }
         @media (min-width: 768px) {
             .room-slide-title {
@@ -483,15 +497,15 @@
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Suites" class="h-full w-full object-cover" src="assets/rooms/Hillstation Suit/SUITE HILLSTATION HOTEL DESIGN_page-0003.jpg"/>
-<div class="absolute inset-x-0 top-0 bottom-0 flex items-center px-margin-mobile py-28 md:px-margin-desktop md:py-32">
+<div class="room-slide-panel-wrap absolute inset-x-0 flex items-center px-margin-mobile md:px-margin-desktop">
 <div class="room-hero-copy hero-glass-panel">
 <span class="mb-4 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="room-slide-title font-display-lg mb-3">Hill Station Suites</h1>
 <p class="room-slide-desc text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
 <div class="room-slide-amenities flex flex-wrap gap-x-5 gap-y-2 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">hotel</span>Suite</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">shower</span>Private Bath</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">hotel</span>Suite</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">wifi</span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">shower</span>Private Bath</span>
 </div>
 <a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_hillstation_suit.html">View Room</a>
 </div>
@@ -499,15 +513,15 @@
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Deluxe" class="h-full w-full object-cover" src="assets/rooms/Hillstation Delux/HILLSTATION DELUX ROOM DESIGN_page-0006.jpg"/>
-<div class="absolute inset-x-0 top-0 bottom-0 flex items-center px-margin-mobile py-28 md:px-margin-desktop md:py-32">
+<div class="room-slide-panel-wrap absolute inset-x-0 flex items-center px-margin-mobile md:px-margin-desktop">
 <div class="room-hero-copy hero-glass-panel">
 <span class="mb-4 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="room-slide-title font-display-lg mb-3">Hill Station Deluxe</h1>
 <p class="room-slide-desc text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
 <div class="room-slide-amenities flex flex-wrap gap-x-5 gap-y-2 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">hotel</span>Deluxe room</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">shower</span>Private Bath</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">hotel</span>Deluxe room</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">wifi</span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">shower</span>Private Bath</span>
 </div>
 <a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_hillstation_delux.html">View Room</a>
 </div>
@@ -515,21 +529,21 @@
 </div>
 <div class="room-hero-slide absolute inset-0" data-room-slide>
 <img alt="Hill Station Standard" class="h-full w-full object-cover" src="assets/rooms/Skylark Standard/skylark standard room-IWW design_page-0003.jpg"/>
-<div class="absolute inset-x-0 top-0 bottom-0 flex items-center px-margin-mobile py-28 md:px-margin-desktop md:py-32">
+<div class="room-slide-panel-wrap absolute inset-x-0 flex items-center px-margin-mobile md:px-margin-desktop">
 <div class="room-hero-copy hero-glass-panel">
 <span class="mb-4 block font-label-caps text-label-caps uppercase tracking-[0.3em] text-secondary">Room Category</span>
 <h1 class="room-slide-title font-display-lg mb-3">Hill Station Standard</h1>
 <p class="room-slide-desc text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
 <div class="room-slide-amenities flex flex-wrap gap-x-5 gap-y-2 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">hotel</span>Standard room</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-white">shower</span>Private Bath</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">hotel</span>Standard room</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">wifi</span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-primary">shower</span>Private Bath</span>
 </div>
 <a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="room_details_skylark_standard.html">View Room</a>
 </div>
 </div>
 </div>
-<div class="absolute bottom-8 right-margin-mobile z-20 hidden items-center gap-2 md:bottom-10 md:right-margin-desktop" data-room-nav>
+<div class="absolute bottom-8 right-margin-mobile z-20 flex items-center gap-2 md:bottom-10 md:right-margin-desktop" data-room-nav>
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-prev aria-label="Previous room">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
@@ -850,11 +864,16 @@
       const viewRoomsButton = roomHero.querySelector('[data-view-rooms]');
       let currentRoomSlide = 0;
       let roomAutoplay;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+      let isDragging = false;
+      const swipeThreshold = 50;
+      const swipeMaxVertical = 72;
 
       const updateRoomNav = () => {
         if (!roomNav) return;
-        roomNav.classList.toggle('hidden', currentRoomSlide === 0);
-        roomNav.classList.toggle('flex', currentRoomSlide !== 0);
+        roomNav.classList.remove('hidden');
+        roomNav.classList.add('flex');
       };
 
       const showRoomSlide = (nextIndex) => {
@@ -869,6 +888,40 @@
         if (currentRoomSlide === 0) return;
         roomAutoplay = window.setInterval(() => showRoomSlide(currentRoomSlide + 1), 6000);
       };
+
+      const handleSwipeEnd = (clientX, clientY) => {
+        if (!isDragging) return;
+        isDragging = false;
+        roomHero.classList.remove('is-dragging');
+        const deltaX = clientX - pointerStartX;
+        const deltaY = clientY - pointerStartY;
+        if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaY) > swipeMaxVertical) return;
+        if (deltaX < 0) showRoomSlide(currentRoomSlide + 1);
+        else showRoomSlide(currentRoomSlide - 1);
+        restartRoomAutoplay();
+      };
+
+      roomHero.addEventListener('pointerdown', (event) => {
+        if (event.target.closest('a, button')) return;
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        pointerStartX = event.clientX;
+        pointerStartY = event.clientY;
+        isDragging = true;
+        roomHero.classList.add('is-dragging');
+        if (roomHero.setPointerCapture) roomHero.setPointerCapture(event.pointerId);
+      });
+
+      roomHero.addEventListener('pointerup', (event) => {
+        handleSwipeEnd(event.clientX, event.clientY);
+        if (roomHero.releasePointerCapture) {
+          try { roomHero.releasePointerCapture(event.pointerId); } catch (_) {}
+        }
+      });
+
+      roomHero.addEventListener('pointercancel', () => {
+        isDragging = false;
+        roomHero.classList.remove('is-dragging');
+      });
 
       previousButton.addEventListener('click', () => {
         showRoomSlide(currentRoomSlide - 1);
