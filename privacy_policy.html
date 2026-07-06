@@ -12,7 +12,63 @@
 <script>tailwind.config={theme:{extend:{colors:{primary:"#1E3D31",secondary:"#A88750",background:"#F6F6F4",surface:"#F6F6F4","on-primary":"#ffffff","on-surface":"#1E3D31","on-surface-variant":"#434843","tertiary-fixed":"#A88750"},spacing:{gutter:"32px","margin-mobile":"24px","margin-desktop":"64px","container-max":"1280px","section-gap":"96px"},fontFamily:{"body-md":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"],"headline-sm":["Libre Caslon Text"],"headline-md":["Libre Caslon Text"],"headline-lg":["Libre Caslon Text"],"display-lg":["Libre Caslon Text"],"label-caps":["Hanken Grotesk"]},fontSize:{"body-md":["16px",{lineHeight:"1.6"}],"body-lg":["18px",{lineHeight:"1.6"}],"headline-sm":["24px",{lineHeight:"1.4"}],"headline-md":["32px",{lineHeight:"1.3"}],"headline-lg":["44px",{lineHeight:"1.16"}],"display-lg":["60px",{lineHeight:"1.08"}],"label-caps":["12px",{lineHeight:"1",letterSpacing:"0",fontWeight:"600"}]}}}}</script>
 </head>
 <body class="bg-background text-on-surface font-body-md">
-<header class="fixed top-0 left-0 z-50 w-full border-b border-primary/10 bg-white shadow-[0_8px_30px_rgba(24,24,24,0.05)]" style="background-image:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),url('assets/hill-station-brand-pattern-crop-greenbackground.png');background-size:620px auto;background-position:center"><div class="mx-auto flex h-24 max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop"><a href="index.html"><img class="w-[200px] md:w-[220px]" alt="The Hill Station" src="assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a><nav class="hidden lg:flex items-center gap-7" aria-label="Primary navigation"><a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="index.html">Home</a><a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="booking_the_hill_station_jos.html">Room</a><a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="contact_the_hill_station_jos_master_update.html">Contact Us</a></nav><a class="hidden lg:inline-flex h-12 items-center border border-primary bg-primary px-6 font-label-caps text-[14px] uppercase text-white hover:bg-transparent hover:text-primary" href="booking_the_hill_station_jos.html">Book Now</a></div></header>
+<header class="fixed top-0 left-0 w-full z-50 bg-white border-b border-primary/10 shadow-[0_8px_30px_rgba(24,24,24,0.05)]" id="site-header" style="background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('assets/hill-station-brand-pattern-crop-greenbackground.png'); background-size: 620px auto; background-position: center;">
+  <div class="mx-auto flex h-24 max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop">
+    <a class="flex shrink-0 items-center" href="index.html" aria-label="The Hill Station home">
+      <img alt="The Hill Station" class="w-[200px] md:w-[220px] h-auto" src="assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7" aria-label="Primary navigation">
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="index.html">Home</a>
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="booking_the_hill_station_jos.html">Room</a>
+  <div class="relative group h-12 flex items-center">
+    <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="#">
+      Amenities <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+    </a>
+    <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="dining_the_hill_station_jos.html">Dining</a>
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="meetings_events_the_hill_station_jos.html">Meeting &amp; Event</a>
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="leisure.html">Wellness</a>
+    </div>
+  </div>
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="contact_the_hill_station_jos_master_update.html">Contact Us</a>
+  <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="gallery_the_hill_station_jos.html">Gallery</a>
+  <div class="relative group h-12 flex items-center">
+    <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="about_us_the_hill_station_jos.html">
+      About Us <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+    </a>
+    <div class="absolute right-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
+      <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="estate_experiences_the_hill_station_jos.html">The Hill Station Experiences</a>
+    </div>
+  </div>
+</nav>
+    <div class="hidden lg:flex items-center">
+      <a class="inline-flex h-12 items-center border border-primary bg-primary px-6 text-[14px] font-label-caps uppercase text-white transition-colors hover:bg-transparent hover:text-primary leading-none" href="booking_the_hill_station_jos.html">Book Now</a>
+    </div>
+    <button class="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.remove('translate-x-full')">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+<div class="fixed inset-0 z-[60] flex translate-x-full flex-col overflow-y-auto bg-white p-margin-mobile text-[#181818] transition-transform duration-500 lg:hidden" id="mobile-nav" style="background-image: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)), url('assets/hill-station-brand-pattern-crop-greenbackground.png'); background-size: 560px auto; background-position: center;">
+  <div class="mb-10 flex items-center justify-between">
+    <a href="index.html" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[200px] h-auto" src="assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
+    <button class="inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full')">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <nav class="flex flex-none flex-col" aria-label="Mobile navigation">
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="index.html">Home</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="booking_the_hill_station_jos.html">Room</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="dining_the_hill_station_jos.html">Dining</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="meetings_events_the_hill_station_jos.html">Meeting &amp; Event</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="leisure.html">Leisure</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="contact_the_hill_station_jos_master_update.html">Contact Us</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="gallery_the_hill_station_jos.html">Gallery</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="about_us_the_hill_station_jos.html">About Us</a>
+  <a class="block py-3 font-headline-md text-[28px] leading-tight text-[#181818] hover:text-primary transition-colors" href="estate_experiences_the_hill_station_jos.html">The Hill Station Experiences</a>
+</nav>
+  <a class="mt-8 inline-flex h-14 items-center justify-center bg-primary px-6 font-label-caps text-[14px] uppercase text-on-primary" href="booking_the_hill_station_jos.html">Book Now</a>
+</div>
 <main class="pt-32">
 <section class="bg-white px-margin-mobile py-section-gap md:px-margin-desktop">
 <div class="mx-auto max-w-3xl">
