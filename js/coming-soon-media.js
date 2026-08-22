@@ -8,6 +8,8 @@
     ".coming-soon-media--fill{width:100%;height:100%}" +
     ".coming-soon-media--abs{position:absolute;inset:0;width:auto;height:auto;max-width:none}" +
     ".coming-soon-veil{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;pointer-events:none;background:linear-gradient(105deg,rgba(10,22,17,.82) 0%,rgba(20,41,33,.74) 38%,rgba(14,29,23,.64) 100%),linear-gradient(to top,rgba(10,22,17,.78),rgba(14,29,23,.42) 46%)}" +
+    ".coming-soon-veil--quiet{z-index:1;background:linear-gradient(105deg,rgba(6,14,11,.9) 0%,rgba(14,29,23,.86) 38%,rgba(8,18,14,.82) 100%),linear-gradient(to top,rgba(6,14,11,.88),rgba(14,29,23,.62) 46%)}" +
+    "#room-hero-slider .room-slide-panel-wrap{z-index:10}" +
     ".coming-soon-label{font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#a88750;text-align:center;padding:0 .75rem;line-height:1.3}" +
     ".coming-soon-page-veil{position:fixed;top:6rem;right:0;bottom:0;left:0;z-index:45;display:flex;align-items:center;justify-content:center;background:linear-gradient(105deg,rgba(6,14,11,.97) 0%,rgba(14,29,23,.96) 42%,rgba(8,18,14,.95) 100%)}" +
     ".coming-soon-page-label{font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:clamp(.9rem,2.2vw,1.15rem);font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#a88750;margin:0}";
@@ -33,22 +35,25 @@
     return /logo/i.test(src) && !/logo-window/i.test(src);
   }
 
-  function addVeil(host) {
+  function addVeil(host, options) {
     if (!host || host.querySelector(":scope > .coming-soon-veil")) return;
+    options = options || {};
     host.classList.add("coming-soon-media");
     var pos = window.getComputedStyle(host).position;
     if (pos === "static") host.style.position = "relative";
     var veil = document.createElement("span");
-    veil.className = "coming-soon-veil";
+    veil.className = "coming-soon-veil" + (options.quiet ? " coming-soon-veil--quiet" : "");
     veil.setAttribute("aria-hidden", "true");
-    var label = document.createElement("span");
-    label.className = "coming-soon-label";
-    label.textContent = "Coming soon";
-    veil.appendChild(label);
+    if (!options.quiet) {
+      var label = document.createElement("span");
+      label.className = "coming-soon-label";
+      label.textContent = "Coming soon";
+      veil.appendChild(label);
+    }
     host.appendChild(veil);
   }
 
-  function wrapImage(img) {
+  function wrapImage(img, options) {
     if (img.closest(".coming-soon-media")) return;
 
     var cs = window.getComputedStyle(img);
@@ -75,7 +80,17 @@
       img.classList.remove("absolute", "inset-0");
     }
 
-    addVeil(wrap);
+    addVeil(wrap, options);
+  }
+
+  function applyHomeHeroRoomOverlays() {
+    var slides = document.querySelectorAll(
+      "#room-hero-slider .room-hero-slide:not(.about-hero-slide)"
+    );
+    slides.forEach(function (slide) {
+      var img = slide.querySelector(":scope > img");
+      if (img) wrapImage(img, { quiet: true });
+    });
   }
 
   function applyGalleryPage() {
@@ -97,6 +112,8 @@
       applyGalleryPage();
       return;
     }
+
+    applyHomeHeroRoomOverlays();
 
     document.querySelectorAll(".logo-window").forEach(function (windowEl) {
       if (isChrome(windowEl) || isPageHero(windowEl)) return;
