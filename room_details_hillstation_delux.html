@@ -8,8 +8,6 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -239,6 +237,8 @@
         footer .border-on-primary\/10 {
             border-color: rgba(24,24,24,0.12) !important;
         }</style>
+      <link rel="stylesheet" href="/css/icons.css"/>
+    <script src="/js/icons.js" defer></script>
   <script src="/js/coming-soon-media.js" defer></script>
 </head>
 <body class="bg-white text-on-surface font-body-md">
@@ -253,7 +253,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/rooms">Room</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="#">
-      Amenities <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      Amenities <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/dining">Dining</a>
@@ -265,7 +265,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/gallery">Gallery</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="/about">
-      About Us <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      About Us <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute right-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/estate-experiences">Hill Station Experiences</a>
@@ -276,7 +276,7 @@
       <a class="inline-flex h-12 items-center border border-primary bg-primary px-6 text-[14px] font-label-caps uppercase text-white transition-colors hover:bg-transparent hover:text-primary leading-none" href="/rooms">Book Now</a>
     </div>
     <button class="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.remove('translate-x-full')">
-      <span class="material-symbols-outlined">menu</span>
+      <span class="material-symbols-outlined" data-icon="menu"></span>
     </button>
   </div>
 </header>
@@ -284,7 +284,7 @@
   <div class="mb-10 flex items-center justify-between">
     <a href="/" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[200px] h-auto" src="/assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
     <button class="inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full')">
-      <span class="material-symbols-outlined">close</span>
+      <span class="material-symbols-outlined" data-icon="close"></span>
     </button>
   </div>
   <nav class="flex flex-none flex-col" aria-label="Mobile navigation">
@@ -345,12 +345,12 @@
         <div class="room-amenities-section pt-4 md:pt-8">
           <h3 class="font-label-caps text-[13px] uppercase text-primary border-b border-outline-variant pb-4 mb-10">Curated Amenities</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none">king_bed</span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Comfort Bed</h4><p class="font-body-md text-sm text-on-surface-variant">Layered linen and pillows</p></div></div>
-            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none">desk</span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Work Desk</h4><p class="font-body-md text-sm text-on-surface-variant">Dedicated writing area</p></div></div>
-            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none">local_bar</span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Mini Bar</h4><p class="font-body-md text-sm text-on-surface-variant">In-room refreshment point</p></div></div>
-            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none">shower</span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Private Bathroom</h4><p class="font-body-md text-sm text-on-surface-variant">Walk-in shower setting</p></div></div>
-            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none">wifi</span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">High-speed Wi-Fi</h4><p class="font-body-md text-sm text-on-surface-variant">Guest connectivity</p></div></div>
-            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none">luggage</span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Luggage Rack</h4><p class="font-body-md text-sm text-on-surface-variant">Arrival convenience</p></div></div>
+            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none" data-icon="king_bed"></span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Comfort Bed</h4><p class="font-body-md text-sm text-on-surface-variant">Layered linen and pillows</p></div></div>
+            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none" data-icon="desk"></span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Work Desk</h4><p class="font-body-md text-sm text-on-surface-variant">Dedicated writing area</p></div></div>
+            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none" data-icon="local_bar"></span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Mini Bar</h4><p class="font-body-md text-sm text-on-surface-variant">In-room refreshment point</p></div></div>
+            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none" data-icon="shower"></span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Private Bathroom</h4><p class="font-body-md text-sm text-on-surface-variant">Walk-in shower setting</p></div></div>
+            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none" data-icon="wifi"></span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">High-speed Wi-Fi</h4><p class="font-body-md text-sm text-on-surface-variant">Guest connectivity</p></div></div>
+            <div class="flex items-start gap-4 min-w-0"><span class="material-symbols-outlined shrink-0 text-primary text-[28px] leading-none" data-icon="luggage"></span><div class="min-w-0"><h4 class="font-label-caps text-[13px] uppercase text-primary mb-1">Luggage Rack</h4><p class="font-body-md text-sm text-on-surface-variant">Arrival convenience</p></div></div>
           </div>
         </div>
       </div>
@@ -368,7 +368,7 @@
                   <option selected>Hill Station Deluxe</option>
                   <option>Hill Station Standard</option>
                 </select>
-                <span class="absolute right-0 bottom-2 text-secondary material-symbols-outlined pointer-events-none text-[20px]">expand_more</span>
+                <span class="absolute right-0 bottom-2 text-secondary material-symbols-outlined pointer-events-none text-[20px]" data-icon="expand_more"></span>
               </div>
             </div>
             <div><span class="font-label-caps text-[10px] text-secondary uppercase mb-2 block">Children</span><p class="font-body-md text-on-primary/85">Infant below 3 years. Child below 16 years.</p></div>
@@ -426,7 +426,7 @@
     <div class="mb-6 flex items-center justify-between gap-4">
       <h3 class="font-headline-sm text-headline-sm text-on-primary">Reservation</h3>
       <button class="inline-flex h-11 w-11 items-center justify-center border border-secondary/40 text-on-primary" type="button" id="mobile-reservation-close" aria-label="Close reservation">
-        <span class="material-symbols-outlined">close</span>
+        <span class="material-symbols-outlined" data-icon="close"></span>
       </button>
     </div>
     <div class="space-y-6">
@@ -439,7 +439,7 @@
             <option selected>Hill Station Deluxe</option>
             <option>Hill Station Standard</option>
           </select>
-          <span class="absolute right-0 bottom-2 text-secondary material-symbols-outlined pointer-events-none text-[20px]">expand_more</span>
+          <span class="absolute right-0 bottom-2 text-secondary material-symbols-outlined pointer-events-none text-[20px]" data-icon="expand_more"></span>
         </div>
       </div>
       <div><span class="font-label-caps text-[10px] text-secondary uppercase mb-2 block">Children</span><p class="font-body-md text-on-primary/85">Infant below 3 years. Child below 16 years.</p></div>
@@ -513,10 +513,10 @@
 </footer>
 <div class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary/95 px-margin-mobile py-8" id="room-gallery-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Room image gallery">
   <button class="absolute right-5 top-5 inline-flex h-12 w-12 items-center justify-center border border-secondary/50 text-on-primary transition-colors hover:bg-secondary hover:text-primary" type="button" id="room-gallery-close" aria-label="Close gallery">
-    <span class="material-symbols-outlined">close</span>
+    <span class="material-symbols-outlined" data-icon="close"></span>
   </button>
   <button class="absolute left-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center border border-secondary/50 text-on-primary transition-colors hover:bg-secondary hover:text-primary md:inline-flex" type="button" id="room-gallery-prev" aria-label="Previous image">
-    <span class="material-symbols-outlined">chevron_left</span>
+    <span class="material-symbols-outlined" data-icon="chevron_left"></span>
   </button>
   <figure class="flex max-h-full w-full max-w-6xl flex-col items-center gap-5">
     <img alt="" class="max-h-[74vh] w-full object-contain" id="room-gallery-image" src=""/>
@@ -526,11 +526,11 @@
     </figcaption>
   </figure>
   <button class="absolute right-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center border border-secondary/50 text-on-primary transition-colors hover:bg-secondary hover:text-primary md:inline-flex" type="button" id="room-gallery-next" aria-label="Next image">
-    <span class="material-symbols-outlined">chevron_right</span>
+    <span class="material-symbols-outlined" data-icon="chevron_right"></span>
   </button>
   <div class="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-3 md:hidden">
-    <button class="inline-flex h-11 w-11 items-center justify-center border border-secondary/50 text-on-primary" type="button" id="room-gallery-prev-mobile" aria-label="Previous image"><span class="material-symbols-outlined">chevron_left</span></button>
-    <button class="inline-flex h-11 w-11 items-center justify-center border border-secondary/50 text-on-primary" type="button" id="room-gallery-next-mobile" aria-label="Next image"><span class="material-symbols-outlined">chevron_right</span></button>
+    <button class="inline-flex h-11 w-11 items-center justify-center border border-secondary/50 text-on-primary" type="button" id="room-gallery-prev-mobile" aria-label="Previous image"><span class="material-symbols-outlined" data-icon="chevron_left"></span></button>
+    <button class="inline-flex h-11 w-11 items-center justify-center border border-secondary/50 text-on-primary" type="button" id="room-gallery-next-mobile" aria-label="Next image"><span class="material-symbols-outlined" data-icon="chevron_right"></span></button>
   </div>
 </div>
 <script>

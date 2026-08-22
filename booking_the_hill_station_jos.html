@@ -4,8 +4,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <title>Book Your Stay | The Hill Station Jos</title>
   <link rel="canonical" href="https://hillstationjos.com/rooms" />
@@ -222,6 +220,8 @@
         footer .border-on-primary\/10 {
             border-color: rgba(24,24,24,0.12) !important;
         }</style>
+      <link rel="stylesheet" href="/css/icons.css"/>
+    <script src="/js/icons.js" defer></script>
   <script src="/js/coming-soon-media.js" defer></script>
 </head>
 <body class="bg-white text-on-surface font-body-md overflow-x-hidden selection:bg-tertiary-fixed selection:text-primary">
@@ -236,7 +236,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/rooms">Room</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="#">
-      Amenities <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      Amenities <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/dining">Dining</a>
@@ -248,7 +248,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/gallery">Gallery</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="/about">
-      About Us <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      About Us <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute right-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/estate-experiences">Hill Station Experiences</a>
@@ -259,7 +259,7 @@
       <a class="inline-flex h-12 items-center border border-primary bg-primary px-6 text-[14px] font-label-caps uppercase text-white transition-colors hover:bg-transparent hover:text-primary leading-none" href="/rooms">Book Now</a>
     </div>
     <button class="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.remove('translate-x-full')">
-      <span class="material-symbols-outlined">menu</span>
+      <span class="material-symbols-outlined" data-icon="menu"></span>
     </button>
   </div>
 </header>
@@ -267,7 +267,7 @@
   <div class="mb-10 flex items-center justify-between">
     <a href="/" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[200px] h-auto" src="/assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
     <button class="inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full')">
-      <span class="material-symbols-outlined">close</span>
+      <span class="material-symbols-outlined" data-icon="close"></span>
     </button>
   </div>
   <nav class="flex flex-none flex-col" aria-label="Mobile navigation">
@@ -317,7 +317,7 @@
 <option>2 Adults, 1 Child</option>
 <option>2 Adults, 2 Children</option>
 </select>
-<span class="absolute right-0 bottom-2 text-primary material-symbols-outlined pointer-events-none">expand_more</span>
+<span class="absolute right-0 bottom-2 text-primary material-symbols-outlined pointer-events-none" data-icon="expand_more"></span>
 <p class="text-[10px] text-on-surface-variant mt-1 font-label-caps">Infant: &lt;3 | Child: &lt;16</p>
 </div>
 <!-- Room Category -->
@@ -328,7 +328,7 @@
 <option>Hill Station Deluxe</option>
 <option>Hill Station Standard</option>
 </select>
-<span class="absolute right-0 bottom-2 text-primary material-symbols-outlined pointer-events-none">expand_more</span>
+<span class="absolute right-0 bottom-2 text-primary material-symbols-outlined pointer-events-none" data-icon="expand_more"></span>
 </div>
 <!-- Search CTA -->
 <div class="flex items-end">
@@ -358,12 +358,12 @@
 <div class="md:col-span-5 order-2 md:order-1 md:pr-12 flex flex-col gap-6">
 <div class="space-y-2"><span class="font-label-caps text-label-caps text-secondary-fixed-dim">FROM ₦ COMING SOON / NIGHT</span><h3 class="font-headline-md text-headline-md text-primary">Hill Station Suites</h3></div>
 <div class="grid grid-cols-3 gap-x-4 gap-y-4 text-on-surface-variant">
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">weekend</span>LIVING LOUNGE</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">king_bed</span>BEDROOM COMFORT</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">countertops</span>KITCHENETTE</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">restaurant</span>DINING CORNER</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">wifi</span>HI-SPEED WI-FI</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">shower</span>PRIVATE BATH</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="weekend"></span>LIVING LOUNGE</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="king_bed"></span>BEDROOM COMFORT</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="countertops"></span>KITCHENETTE</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="restaurant"></span>DINING CORNER</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="wifi"></span>HI-SPEED WI-FI</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="shower"></span>PRIVATE BATH</span>
 </div>
 <a class="w-fit border border-primary px-8 py-3 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all duration-500 uppercase tracking-widest" href="/suites">Select Room</a>
 </div>
@@ -379,12 +379,12 @@
 <div class="md:col-span-5 md:pl-12 flex flex-col gap-6">
 <div class="space-y-2"><span class="font-label-caps text-label-caps text-secondary-fixed-dim">FROM ₦ COMING SOON / NIGHT</span><h3 class="font-headline-md text-headline-md text-primary">Hill Station Deluxe</h3></div>
 <div class="grid grid-cols-3 gap-x-4 gap-y-4 text-on-surface-variant">
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">king_bed</span>COMFORT BED</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">desk</span>WORK DESK</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">local_bar</span>MINI BAR</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">shower</span>PRIVATE BATH</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">wifi</span>HI-SPEED WI-FI</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">luggage</span>LUGGAGE RACK</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="king_bed"></span>COMFORT BED</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="desk"></span>WORK DESK</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="local_bar"></span>MINI BAR</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="shower"></span>PRIVATE BATH</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="wifi"></span>HI-SPEED WI-FI</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="luggage"></span>LUGGAGE RACK</span>
 </div>
 <a class="w-fit border border-primary px-8 py-3 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all duration-500 uppercase tracking-widest" href="/deluxe">Select Room</a>
 </div>
@@ -397,12 +397,12 @@
 <div class="md:col-span-5 md:pl-12 flex flex-col gap-6">
 <div class="space-y-2"><span class="font-label-caps text-label-caps text-secondary-fixed-dim">FROM ₦ COMING SOON / NIGHT</span><h3 class="font-headline-md text-headline-md text-primary">Hill Station Standard</h3></div>
 <div class="grid grid-cols-3 gap-x-4 gap-y-4 text-on-surface-variant">
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">bed</span>COMFORT BED</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">desk</span>WRITING DESK</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">inventory_2</span>WARDROBE</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">local_bar</span>MINI BAR</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">wifi</span>HI-SPEED WI-FI</span>
-<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary">shower</span>PRIVATE BATH</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="bed"></span>COMFORT BED</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="desk"></span>WRITING DESK</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="inventory_2"></span>WARDROBE</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="local_bar"></span>MINI BAR</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="wifi"></span>HI-SPEED WI-FI</span>
+<span class="inline-flex flex-col items-center gap-1 text-center font-label-caps text-[9px] leading-tight"><span class="material-symbols-outlined shrink-0 text-[20px] text-primary" data-icon="shower"></span>PRIVATE BATH</span>
 </div>
 <a class="w-fit border border-primary px-8 py-3 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all duration-500 uppercase tracking-widest" href="/standard">Select Room</a>
 </div>
@@ -420,7 +420,7 @@
 <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-y-12 gap-x-gutter">
 <!-- Policy 1 -->
 <div class="flex flex-col gap-4 border-l border-outline-variant/20 pl-8">
-<span class="material-symbols-outlined text-tertiary-fixed">schedule</span>
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="schedule"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-tertiary-fixed mb-2 uppercase">Check-In / Out</h4>
 <p class="font-body-md">Check-in from 15:00. Check-out by 11:00. Early arrivals are subject to availability.</p>
@@ -428,7 +428,7 @@
 </div>
 <!-- Policy 2 -->
 <div class="flex flex-col gap-4 border-l border-outline-variant/20 pl-8">
-<span class="material-symbols-outlined text-tertiary-fixed">smoke_free</span>
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="smoke_free"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-tertiary-fixed mb-2 uppercase">Smoke-Free Environment</h4>
 <p class="font-body-md">For the health and comfort of our guests, the entire resort is strictly non-smoking.</p>
@@ -436,7 +436,7 @@
 </div>
 <!-- Policy 3 -->
 <div class="flex flex-col gap-4 border-l border-outline-variant/20 pl-8">
-<span class="material-symbols-outlined text-tertiary-fixed">pets</span>
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="pets"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-tertiary-fixed mb-2 uppercase">Pet Policy</h4>
 <p class="font-body-md">While we love animals, The Hill Station remains a pet-free sanctuary to preserve our heritage interiors.</p>
@@ -444,7 +444,7 @@
 </div>
 <!-- Policy 4 -->
 <div class="flex flex-col gap-4 border-l border-outline-variant/20 pl-8">
-<span class="material-symbols-outlined text-tertiary-fixed">payments</span>
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="payments"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-tertiary-fixed mb-2 uppercase">Cashless Operations</h4>
 <p class="font-body-md">We operate a cashless desk. We accept all major credit/debit cards and secure bank transfers only.</p>

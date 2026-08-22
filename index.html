@@ -6,7 +6,6 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
@@ -524,6 +523,8 @@
           },
         }
     </script>
+      <link rel="stylesheet" href="/css/icons.css"/>
+    <script src="/js/icons.js" defer></script>
   <script src="/js/coming-soon-media.js" defer></script>
 </head>
 <body class="bg-background text-on-surface selection:bg-tertiary-fixed selection:text-white">
@@ -538,7 +539,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/rooms">Room</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="#">
-      Amenities <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      Amenities <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/dining">Dining</a>
@@ -550,7 +551,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/gallery">Gallery</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="/about">
-      About Us <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      About Us <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute right-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/estate-experiences">The Hill Station Experiences</a>
@@ -561,7 +562,7 @@
       <a class="inline-flex h-12 items-center border border-primary bg-primary px-6 text-[14px] font-label-caps uppercase text-white transition-colors hover:bg-transparent hover:text-primary leading-none" href="/rooms">Book Now</a>
     </div>
     <button class="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.remove('translate-x-full')">
-      <span class="material-symbols-outlined">menu</span>
+      <span class="material-symbols-outlined" data-icon="menu"></span>
     </button>
   </div>
 </header>
@@ -569,7 +570,7 @@
   <div class="mb-10 flex items-center justify-between">
     <a href="/" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[200px] h-auto" src="/assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
     <button class="inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full')">
-      <span class="material-symbols-outlined">close</span>
+      <span class="material-symbols-outlined" data-icon="close"></span>
     </button>
   </div>
   <nav class="flex flex-none flex-col" aria-label="Mobile navigation">
@@ -597,10 +598,10 @@
 <a class="inline-flex shrink-0 bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="/rooms">View Our Rooms</a>
 <div class="flex shrink-0 items-center gap-2 md:hidden ml-3" data-room-nav-inline aria-label="Slider navigation">
 <button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-prev aria-label="Previous slide">
-<span class="material-symbols-outlined">arrow_back</span>
+<span class="material-symbols-outlined" data-icon="arrow_back"></span>
 </button>
 <button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-next aria-label="Next slide">
-<span class="material-symbols-outlined">arrow_forward</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward"></span>
 </button>
 </div>
 </div>
@@ -625,9 +626,9 @@
 <h1 class="room-slide-title font-display-lg mb-3">The Hill Station Suites</h1>
 <p class="room-slide-desc text-white/85">A generous suite with lounge space, kitchenette detail, and more room to settle in.</p>
 <div class="room-slide-amenities flex flex-wrap gap-x-5 gap-y-2 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Suite</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">shower</span>Private Bath</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="hotel"></span>Suite</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="wifi"></span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="shower"></span>Private Bath</span>
 </div>
 <a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="/suites">View Room</a>
 </div>
@@ -641,9 +642,9 @@
 <h1 class="room-slide-title font-display-lg mb-3">The Hill Station Deluxe</h1>
 <p class="room-slide-desc text-white/85">Warm wood tones, tailored storage, and quiet modern detail for restorative stays in the Jos highlands.</p>
 <div class="room-slide-amenities flex flex-wrap gap-x-5 gap-y-2 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Deluxe room</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">shower</span>Private Bath</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="hotel"></span>Deluxe room</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="wifi"></span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="shower"></span>Private Bath</span>
 </div>
 <a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="/deluxe">View Room</a>
 </div>
@@ -657,9 +658,9 @@
 <h1 class="room-slide-title font-display-lg mb-3">The Hill Station Standard</h1>
 <p class="room-slide-desc text-white/85">A compact, polished room for uncomplicated comfort, clear function, and easy stays.</p>
 <div class="room-slide-amenities flex flex-wrap gap-x-5 gap-y-2 text-white/85">
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">hotel</span>Standard room</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">wifi</span>Wi-Fi</span>
-<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary">shower</span>Private Bath</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="hotel"></span>Standard room</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="wifi"></span>Wi-Fi</span>
+<span class="inline-flex items-center gap-2 font-label-caps text-[11px] uppercase"><span class="material-symbols-outlined text-[20px] text-secondary" data-icon="shower"></span>Private Bath</span>
 </div>
 <a class="mt-auto inline-flex h-13 items-center bg-secondary px-8 py-4 font-label-caps text-label-caps uppercase text-white transition-all hover:brightness-110" href="/standard">View Room</a>
 </div>
@@ -667,10 +668,10 @@
 </div>
 <div class="absolute bottom-14 right-margin-mobile z-20 mr-6 hidden items-center gap-2 md:bottom-10 md:mr-0 md:right-margin-desktop" data-room-nav>
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-prev aria-label="Previous room">
-<span class="material-symbols-outlined">arrow_back</span>
+<span class="material-symbols-outlined" data-icon="arrow_back"></span>
 </button>
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-next aria-label="Next room">
-<span class="material-symbols-outlined">arrow_forward</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward"></span>
 </button>
 </div>
 </section>
@@ -684,7 +685,7 @@
                 For nearly a century, The Hill Station has stood as one of Plateau&rsquo;s most recognisable hospitality landmark. Its stone architecture, cool climate, and storied guest history have made it a place of arrival for travellers, dignitaries, families, and communities across generations. Today, The Hill Station returns renewed: refined, restored, and reimagined for modern stays, corporate gatherings, leisure, dining, wellness, and discovery.
             </p>
 <a class="group flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary/20 pb-2 w-fit" href="/about">
-                Learn More <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+                Learn More <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_right_alt"></span>
 </a>
 </div>
 <div class="md:col-span-7 relative">
@@ -750,23 +751,23 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-8">Some occasions deserve more than a venue. At The Hill Station, meetings, celebrations, and milestone moments unfold in an atmosphere shaped by heritage, hospitality, and the unmistakable calm of Plateau.</p>
 <div class="space-y-4 mb-8">
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">meeting_room</span>
+<span class="material-symbols-outlined text-secondary" data-icon="meeting_room"></span>
 <span class="font-body-md font-bold text-primary">The Hill Station Meeting Room</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">restaurant</span>
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant"></span>
 <span class="font-body-md font-bold text-primary">The Banquet Hall</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">restaurant</span>
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant"></span>
 <span class="font-body-md font-bold text-primary">The Laundry Caf&eacute; Meeting Room</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">celebration</span>
+<span class="material-symbols-outlined text-secondary" data-icon="celebration"></span>
 <span class="font-body-md font-bold text-primary">The Marquee</span>
 </div>
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">groups</span>
+<span class="material-symbols-outlined text-secondary" data-icon="groups"></span>
 <span class="font-body-md font-bold text-primary">The Conference Hall</span>
 </div>
 </div>
@@ -834,19 +835,19 @@
 <p class="font-body-md text-body-md opacity-80 mb-12">Our resort features contemporary lifestyle amenities designed for physical and mental restoration.</p>
 <ul class="space-y-4 mb-8">
 <li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">fitness_center</span>
+<span class="material-symbols-outlined text-secondary" data-icon="fitness_center"></span>
 <span class="font-body-md font-bold text-white">The Hill Station Fitness Club</span>
 </li>
 <li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">spa</span>
+<span class="material-symbols-outlined text-secondary" data-icon="spa"></span>
 <span class="font-body-md font-bold text-white">The Wellness Centre</span>
 </li>
 <li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">pool</span>
+<span class="material-symbols-outlined text-secondary" data-icon="pool"></span>
 <span class="font-body-md font-bold text-white">The Rock Garden Pool</span>
 </li>
 </ul>
-<a class="inline-flex h-12 items-center gap-2 bg-secondary px-6 font-label-caps text-[12px] uppercase text-primary transition-colors hover:bg-surface hover:text-primary leading-none" href="/leisure">Explore Leisure <span class="material-symbols-outlined text-[18px] leading-none">arrow_right_alt</span></a>
+<a class="inline-flex h-12 items-center gap-2 bg-secondary px-6 font-label-caps text-[12px] uppercase text-primary transition-colors hover:bg-surface hover:text-primary leading-none" href="/leisure">Explore Leisure <span class="material-symbols-outlined text-[18px] leading-none" data-icon="arrow_right_alt"></span></a>
 </div>
 <div class="md:w-2/3 grid grid-cols-2 gap-4">
 <div class="aspect-[3/4] bg-primary-container overflow-hidden">
@@ -895,15 +896,15 @@
 <h2 class="font-headline-lg text-headline-lg text-primary mb-8">Visit Us in the <br/>Highlands</h2>
 <div class="space-y-6 mb-10">
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="material-symbols-outlined text-primary" data-icon="location_on"></span>
 <p class="font-body-md text-body-md text-on-surface">10 Tudun Wada Road,<br/>Jos, Plateau State, Nigeria</p>
 </div>
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">call</span>
+<span class="material-symbols-outlined text-primary" data-icon="call"></span>
 <p class="font-body-md text-body-md text-on-surface"><a class="hover:text-primary" href="tel:+2347014493026">+234 701 449 3026</a></p>
 </div>
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">mail</span>
+<span class="material-symbols-outlined text-primary" data-icon="mail"></span>
 <p class="font-body-md text-body-md text-on-surface">reservations@hillstationjos.com</p>
 </div>
 </div>

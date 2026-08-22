@@ -8,8 +8,6 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -340,6 +338,8 @@
         section.about-hero-section.bg-primary:not(#room-hero-slider) .text-on-primary {
             color: #ffffff !important;
         }</style>
+      <link rel="stylesheet" href="/css/icons.css"/>
+    <script src="/js/icons.js" defer></script>
   <script src="/js/coming-soon-media.js" defer></script>
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden">
@@ -354,7 +354,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/rooms">Room</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="#">
-      Amenities <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      Amenities <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute left-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/dining">Dining</a>
@@ -366,7 +366,7 @@
   <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none" href="/gallery">Gallery</a>
   <div class="relative group h-12 flex items-center">
     <a class="relative inline-flex h-12 items-center text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary transition-colors duration-300 leading-none gap-1" href="/about">
-      About Us <span class="material-symbols-outlined text-[18px] leading-none">expand_more</span>
+      About Us <span class="material-symbols-outlined text-[18px] leading-none" data-icon="expand_more"></span>
     </a>
     <div class="absolute right-0 top-full hidden min-w-60 border border-primary/10 bg-white py-2 shadow-xl group-hover:block group-focus-within:block">
       <a class="block px-5 py-3 text-[14px] font-label-caps uppercase text-[#181818] hover:text-primary hover:bg-primary/5 transition-colors leading-none" href="/estate-experiences">Hill Station Experiences</a>
@@ -377,7 +377,7 @@
       <a class="inline-flex h-12 items-center border border-primary bg-primary px-6 text-[14px] font-label-caps uppercase text-white transition-colors hover:bg-transparent hover:text-primary leading-none" href="/rooms">Book Now</a>
     </div>
     <button class="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Open menu" onclick="document.getElementById('mobile-nav').classList.remove('translate-x-full')">
-      <span class="material-symbols-outlined">menu</span>
+      <span class="material-symbols-outlined" data-icon="menu"></span>
     </button>
   </div>
 </header>
@@ -385,7 +385,7 @@
   <div class="mb-10 flex items-center justify-between">
     <a href="/" aria-label="The Hill Station home"><img alt="The Hill Station" class="w-[200px] h-auto" src="/assets/HILL STATION LOGO/Secondary logo/PNG-20240523T131423Z-001/SECONDARY LOGO.png"/></a>
     <button class="inline-flex h-11 w-11 items-center justify-center border border-primary/30 text-[#181818]" type="button" aria-label="Close menu" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full')">
-      <span class="material-symbols-outlined">close</span>
+      <span class="material-symbols-outlined" data-icon="close"></span>
     </button>
   </div>
   <nav class="flex flex-none flex-col" aria-label="Mobile navigation">
@@ -462,17 +462,17 @@
 <h2 class="font-headline-lg text-headline-lg mb-12 italic text-primary">Rustic Elegance. Grounded in the Plateau</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter text-left">
 <div class="brand-green-card p-8">
-<span class="material-symbols-outlined text-5xl mb-6 text-secondary">location_city</span>
+<span class="material-symbols-outlined text-5xl mb-6 text-secondary" data-icon="location_city"></span>
 <h3 class="font-headline-sm text-headline-sm mb-4 text-on-primary">Local Pride</h3>
 <p class="font-body-md text-on-primary/85">We celebrate Plateau as part of the experience, not a backdrop to it.</p>
 </div>
 <div class="brand-green-card p-8">
-<span class="material-symbols-outlined text-5xl mb-6 text-secondary">castle</span>
+<span class="material-symbols-outlined text-5xl mb-6 text-secondary" data-icon="castle"></span>
 <h3 class="font-headline-sm text-headline-sm mb-4 text-on-primary">Cultural Preservation</h3>
 <p class="font-body-md text-on-primary/85">We honour the memory, architecture, craft, and community value of a landmark reborn.</p>
 </div>
 <div class="brand-green-card p-8">
-<span class="material-symbols-outlined text-5xl mb-6 text-secondary">volunteer_activism</span>
+<span class="material-symbols-outlined text-5xl mb-6 text-secondary" data-icon="volunteer_activism"></span>
 <h3 class="font-headline-sm text-headline-sm mb-4 text-on-primary">Responsible Stewardship</h3>
 <p class="font-body-md text-on-primary/85">We believe restoration should create value for guests, residents, local culture, and the wider destination.</p>
 </div>
@@ -527,21 +527,21 @@
                         </p>
 <ul class="space-y-6">
 <li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-on-tertiary-container mt-1" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="material-symbols-outlined text-on-tertiary-container mt-1" style="font-variation-settings: 'FILL' 1;" data-icon="eco"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-primary mb-1">LOCAL SOURCING</h4>
 <p class="font-body-md text-on-surface-variant">Our culinary philosophy begins in the fertile soils of the Jos highlands. By partnering with local farmers and producers, we celebrate regional ingredients while supporting sustainable livelihoods within our community.</p>
 </div>
 </li>
 <li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-on-tertiary-container mt-1" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="material-symbols-outlined text-on-tertiary-container mt-1" style="font-variation-settings: 'FILL' 1;" data-icon="groups"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-primary mb-1">CULTURAL PRESERVATION</h4>
 <p class="font-body-md text-on-surface-variant">The rich traditions of Plateau State continue to inspire our spaces and experiences. Through collaborations with local artisans and craftspeople, we help preserve cultural heritage while sharing its beauty with guests from around the world.</p>
 </div>
 </li>
 <li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-on-tertiary-container mt-1" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="material-symbols-outlined text-on-tertiary-container mt-1" style="font-variation-settings: 'FILL' 1;" data-icon="water_drop"></span>
 <div>
 <h4 class="font-label-caps text-label-caps text-primary mb-1">RESPONSIBLE STEWARDSHIP</h4>
 <p class="font-body-md text-on-surface-variant">From water conservation initiatives to environmentally conscious operations, we are committed to protecting the natural resources that have made Plateau a destination of distinction for generations.</p>
