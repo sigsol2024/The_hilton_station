@@ -40,10 +40,17 @@
             cursor: grabbing;
             user-select: none;
         }
+        .room-hero-track {
+            position: absolute;
+            inset: 0;
+        }
         .room-hero-slide {
             height: 100%;
             min-height: 100svh;
             overflow: hidden;
+        }
+        .room-hero-mobile-nav {
+            display: none;
         }
         .hero-glass-panel {
             background: rgba(28, 42, 38, 0.5);
@@ -247,41 +254,129 @@
         }
         @media (max-width: 767px) {
             #room-hero-slider {
-                min-height: 100svh;
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                min-height: 0;
                 max-width: 100%;
                 overflow-x: hidden;
-            }
-            #room-hero-slider.is-intro-active {
-                height: auto;
-                min-height: 100svh;
-                overflow-x: hidden;
+                overflow-x: clip;
                 overflow-y: visible;
+                touch-action: auto;
+                cursor: default;
             }
-            #room-hero-slider:not(.is-intro-active) {
-                height: 100svh;
+            #room-hero-slider.is-dragging {
+                cursor: default;
             }
-            #room-hero-slider.is-intro-active .about-hero-slide.is-active {
+            .room-hero-track {
                 position: relative;
                 inset: auto;
-                min-height: 100svh;
-                height: auto;
-                overflow-x: hidden;
-                overflow-y: visible;
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+                width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none;
+                touch-action: pan-x pan-y;
             }
-            #room-hero-slider.is-intro-active .about-hero-slide:not(.is-active) {
+            .room-hero-track::-webkit-scrollbar {
+                display: none;
+            }
+            .room-hero-slide {
+                position: relative !important;
+                inset: auto !important;
+                flex: 0 0 100%;
+                width: 100%;
+                min-width: 100%;
+                max-width: 100%;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+                opacity: 1 !important;
+                transform: none !important;
+                pointer-events: auto;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+            .room-hero-slide:not(.about-hero-slide) {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                overflow: hidden;
+                min-height: 42rem;
+            }
+            .room-hero-slide:not(.about-hero-slide) > img,
+            .room-hero-slide:not(.about-hero-slide) > .coming-soon-media {
                 position: absolute;
                 inset: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .room-hero-slide:not(.about-hero-slide) > .coming-soon-media img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
             }
             .hero-glass-panel {
                 min-height: 0;
                 max-width: 100%;
             }
             .room-slide-panel-wrap {
-                top: 0;
-                bottom: 0;
-                align-items: flex-start;
-                padding-top: calc(6.25rem + min(85vw, 320px) * 0.8 + 0.75rem);
-                padding-bottom: 2.5rem;
+                position: relative;
+                top: auto;
+                bottom: auto;
+                z-index: 10;
+                width: 100%;
+                margin-top: auto;
+                align-items: flex-end;
+                padding-top: 6.5rem;
+                padding-bottom: 1.25rem;
+            }
+            .room-hero-mobile-nav {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 2.75rem;
+                flex-shrink: 0;
+                width: 100%;
+                padding: 0.35rem 1.5rem 1.15rem;
+                background: #1E3D31;
+                z-index: 20;
+            }
+            .room-hero-arrow {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.5rem;
+                border: 0;
+                background: transparent;
+                color: #A88750;
+                line-height: 1;
+            }
+            .room-hero-arrow .material-symbols-outlined {
+                font-size: 2rem;
+                width: 2rem;
+                height: 2rem;
+            }
+            .room-hero-arrow[data-room-prev] {
+                animation: roomHeroHintLeft 1.8s ease-in-out infinite;
+            }
+            .room-hero-arrow[data-room-next] {
+                animation: roomHeroHintRight 1.8s ease-in-out infinite;
+            }
+            @keyframes roomHeroHintLeft {
+                0%, 100% { transform: translateX(0); opacity: 0.55; }
+                50% { transform: translateX(-7px); opacity: 1; }
+            }
+            @keyframes roomHeroHintRight {
+                0%, 100% { transform: translateX(0); opacity: 0.55; }
+                50% { transform: translateX(7px); opacity: 1; }
             }
             .logo-window {
                 aspect-ratio: 1.25 / 1;
@@ -294,17 +389,18 @@
                 padding-top: 6px !important;
             }
             .about-hero-slide {
-                overflow-x: hidden;
-                overflow-y: visible;
+                overflow: visible;
+                display: flex;
+                flex-direction: column;
             }
             .about-hero-slide .about-hero-inner {
                 height: auto;
                 min-height: 0;
                 max-width: 100%;
-                overflow-x: hidden;
+                overflow: visible;
                 justify-content: flex-start;
                 padding-top: 6.25rem;
-                padding-bottom: 2.5rem;
+                padding-bottom: 1.25rem;
                 gap: 0.75rem;
             }
             .about-hero-slide .hero-visual {
@@ -337,6 +433,11 @@
             .about-hero-slide .hero-copy .mb-10,
             .about-hero-slide .hero-copy .mb-6 {
                 margin-bottom: 1.25rem;
+            }
+            .room-hero-copy {
+                opacity: 1;
+                transform: none;
+                transition: none;
             }
         }
         @media (min-width: 768px) and (max-width: 1199px) {
@@ -587,23 +688,16 @@
   <a class="mt-8 inline-flex h-14 items-center justify-center bg-primary px-6 font-label-caps text-[14px] uppercase text-on-primary" href="/rooms">Book Now</a>
 </div>
 <!-- Hero Section -->
-<section class="relative min-h-[100svh] w-full overflow-hidden bg-primary text-on-primary" id="room-hero-slider" aria-label="Featured highlights">
+<section class="relative w-full overflow-hidden bg-primary text-on-primary md:min-h-[100svh]" id="room-hero-slider" aria-label="Featured highlights">
+<div class="room-hero-track" data-room-track>
 <div class="room-hero-slide about-hero-slide is-active absolute inset-0" data-room-slide>
 <div class="absolute inset-0" style="background: radial-gradient(circle at 78% 22%, rgba(168,135,80,0.24), transparent 34%), linear-gradient(110deg, rgba(24,24,24,0.18), transparent 52%);"></div>
 <div class="about-hero-inner relative z-10 mx-auto flex h-full min-h-0 max-w-container-max flex-col justify-center gap-4 px-margin-mobile max-md:pb-0 max-md:pt-0 pb-28 pt-36 md:gap-6 md:px-margin-desktop md:pb-32 md:pt-40 lg:grid lg:grid-cols-12 lg:items-center lg:gap-gutter">
 <div class="hero-copy order-2 max-w-2xl lg:order-1 lg:col-span-5 room-hero-copy">
 <h1 class="intro-slide-title font-display-lg mb-3">A Plateau Icon, Restored for Today</h1>
 <p class="intro-slide-desc mb-6 max-w-xl text-white/85">A storied highland retreat where heritage, modern Victorian hospitality, and the cool Plateau air come together in quiet harmony.</p>
-<div class="intro-cta-row flex items-center justify-between gap-3">
+<div class="intro-cta-row flex items-center gap-3">
 <a class="inline-flex shrink-0 bg-secondary px-8 py-4 font-label-caps text-label-caps text-white transition-all hover:brightness-110" href="/rooms">View Our Rooms</a>
-<div class="flex shrink-0 items-center gap-2 md:hidden ml-3" data-room-nav-inline aria-label="Slider navigation">
-<button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-prev aria-label="Previous slide">
-<span class="material-symbols-outlined" data-icon="arrow_back"></span>
-</button>
-<button class="inline-flex h-11 w-11 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-secondary hover:text-white" type="button" data-room-next aria-label="Next slide">
-<span class="material-symbols-outlined" data-icon="arrow_forward"></span>
-</button>
-</div>
 </div>
 </div>
 <div class="hero-visual relative order-1 lg:order-2 lg:col-span-7">
@@ -666,7 +760,16 @@
 </div>
 </div>
 </div>
-<div class="absolute bottom-14 right-margin-mobile z-20 mr-6 hidden items-center gap-2 md:bottom-10 md:mr-0 md:right-margin-desktop" data-room-nav>
+</div>
+<nav class="room-hero-mobile-nav" data-room-nav-mobile aria-label="Slider navigation">
+<button class="room-hero-arrow" type="button" data-room-prev aria-label="Previous slide">
+<span class="material-symbols-outlined" data-icon="chevron_left"></span>
+</button>
+<button class="room-hero-arrow" type="button" data-room-next aria-label="Next slide">
+<span class="material-symbols-outlined" data-icon="chevron_right"></span>
+</button>
+</nav>
+<div class="absolute bottom-14 right-margin-mobile z-20 mr-6 hidden items-center gap-2 md:bottom-10 md:mr-0 md:right-margin-desktop md:flex" data-room-nav>
 <button class="inline-flex h-12 w-12 items-center justify-center border border-white/70 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-primary hover:text-white" type="button" data-room-prev aria-label="Previous room">
 <span class="material-symbols-outlined" data-icon="arrow_back"></span>
 </button>
@@ -981,11 +1084,10 @@
   document.addEventListener("DOMContentLoaded", function() {
     const roomHero = document.getElementById('room-hero-slider');
     if (roomHero) {
+      const track = roomHero.querySelector('[data-room-track]');
       const slides = Array.from(roomHero.querySelectorAll('[data-room-slide]'));
       const previousButtons = Array.from(roomHero.querySelectorAll('[data-room-prev]'));
       const nextButtons = Array.from(roomHero.querySelectorAll('[data-room-next]'));
-      const roomNav = roomHero.querySelector('[data-room-nav]');
-      const roomNavInline = roomHero.querySelector('[data-room-nav-inline]');
       let currentRoomSlide = 0;
       let roomAutoplay;
       let pointerStartX = 0;
@@ -994,35 +1096,34 @@
       const swipeThreshold = 50;
       const swipeMaxVertical = 72;
       const mobileMedia = window.matchMedia('(max-width: 767px)');
+      const isMobile = () => mobileMedia.matches;
 
-      const updateRoomNav = () => {
-        const isIntro = currentRoomSlide === 0;
-        const isMobile = mobileMedia.matches;
+      const markActive = (index) => {
+        currentRoomSlide = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('is-active', i === currentRoomSlide));
+      };
 
-        roomHero.classList.toggle('is-intro-active', isMobile && isIntro);
-
-        if (roomNavInline) {
-          roomNavInline.classList.toggle('hidden', !isMobile || !isIntro);
-          roomNavInline.classList.toggle('flex', isMobile && isIntro);
-        }
-
-        if (roomNav) {
-          const showFloating = !isMobile || !isIntro;
-          roomNav.classList.toggle('hidden', !showFloating);
-          roomNav.classList.toggle('flex', showFloating);
-        }
+      const scrollToSlide = (index, smooth) => {
+        if (!track) return;
+        const next = (index + slides.length) % slides.length;
+        const left = slides[next].offsetLeft;
+        track.scrollTo({ left: left, behavior: smooth ? 'smooth' : 'auto' });
+        markActive(next);
       };
 
       const showRoomSlide = (nextIndex) => {
+        if (isMobile()) {
+          scrollToSlide(nextIndex, true);
+          return;
+        }
         slides[currentRoomSlide].classList.remove('is-active');
         currentRoomSlide = (nextIndex + slides.length) % slides.length;
         slides[currentRoomSlide].classList.add('is-active');
-        updateRoomNav();
       };
 
       const restartRoomAutoplay = () => {
         window.clearInterval(roomAutoplay);
-        if (currentRoomSlide === 0) return;
+        if (isMobile() || currentRoomSlide === 0) return;
         roomAutoplay = window.setInterval(() => showRoomSlide(currentRoomSlide + 1), 6000);
       };
 
@@ -1038,7 +1139,19 @@
         restartRoomAutoplay();
       };
 
+      if (track) {
+        track.addEventListener('scroll', () => {
+          if (!isMobile()) return;
+          const width = track.clientWidth || 1;
+          const index = Math.round(track.scrollLeft / width);
+          if (index >= 0 && index < slides.length && index !== currentRoomSlide) {
+            markActive(index);
+          }
+        }, { passive: true });
+      }
+
       roomHero.addEventListener('pointerdown', (event) => {
+        if (isMobile()) return;
         if (event.target.closest('a, button')) return;
         if (event.pointerType === 'mouse' && event.button !== 0) return;
         pointerStartX = event.clientX;
@@ -1049,6 +1162,7 @@
       });
 
       roomHero.addEventListener('pointerup', (event) => {
+        if (isMobile()) return;
         handleSwipeEnd(event.clientX, event.clientY);
         if (roomHero.releasePointerCapture) {
           try { roomHero.releasePointerCapture(event.pointerId); } catch (_) {}
@@ -1074,9 +1188,16 @@
         });
       });
 
-      mobileMedia.addEventListener('change', updateRoomNav);
-
-      updateRoomNav();
+      mobileMedia.addEventListener('change', () => {
+        window.clearInterval(roomAutoplay);
+        if (isMobile()) {
+          scrollToSlide(currentRoomSlide, false);
+        } else if (track) {
+          track.scrollTo({ left: 0, behavior: 'auto' });
+          markActive(currentRoomSlide);
+          restartRoomAutoplay();
+        }
+      });
     }
 
     document.querySelectorAll('.lifestyle-slider').forEach((slider) => {
