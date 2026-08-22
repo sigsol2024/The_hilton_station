@@ -4,11 +4,11 @@
   var style = document.createElement("style");
   style.id = "coming-soon-media-style";
   style.textContent =
-    ".coming-soon-media{position:relative;display:block;overflow:hidden;max-width:100%}" +
+    ".coming-soon-media{position:relative;display:block;overflow:hidden;max-width:100%;z-index:0;isolation:isolate}" +
     ".coming-soon-media--fill{width:100%;height:100%}" +
     ".coming-soon-media--abs{position:absolute;inset:0;width:auto;height:auto;max-width:none}" +
-    ".coming-soon-veil{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;pointer-events:none;background:linear-gradient(105deg,rgba(10,22,17,.82) 0%,rgba(20,41,33,.74) 38%,rgba(14,29,23,.64) 100%),linear-gradient(to top,rgba(10,22,17,.78),rgba(14,29,23,.42) 46%)}" +
-    ".coming-soon-veil--quiet{z-index:1;background:linear-gradient(105deg,rgba(6,14,11,.9) 0%,rgba(14,29,23,.86) 38%,rgba(8,18,14,.82) 100%),linear-gradient(to top,rgba(6,14,11,.88),rgba(14,29,23,.62) 46%)}" +
+    ".coming-soon-veil{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;pointer-events:none;background:linear-gradient(105deg,rgba(10,22,17,.82) 0%,rgba(20,41,33,.74) 38%,rgba(14,29,23,.64) 100%),linear-gradient(to top,rgba(10,22,17,.78),rgba(14,29,23,.42) 46%)}" +
+    ".coming-soon-veil--quiet{background:linear-gradient(105deg,rgba(6,14,11,.9) 0%,rgba(14,29,23,.86) 38%,rgba(8,18,14,.82) 100%),linear-gradient(to top,rgba(6,14,11,.88),rgba(14,29,23,.62) 46%)}" +
     "#room-hero-slider .room-slide-panel-wrap{z-index:10}" +
     ".coming-soon-label{font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#a88750;text-align:center;padding:0 .75rem;line-height:1.3}" +
     ".coming-soon-page-veil{position:fixed;top:6rem;right:0;bottom:0;left:0;z-index:45;display:flex;align-items:center;justify-content:center;background:linear-gradient(105deg,rgba(6,14,11,.97) 0%,rgba(14,29,23,.96) 42%,rgba(8,18,14,.95) 100%)}" +
@@ -35,12 +35,18 @@
     return /logo/i.test(src) && !/logo-window/i.test(src);
   }
 
-  function addVeil(host, options) {
-    if (!host || host.querySelector(":scope > .coming-soon-veil")) return;
+  function isFillImage(img) {
+    var cs = window.getComputedStyle(img);
+    return (
+      cs.position === "absolute" ||
+      cs.position === "fixed" ||
+      img.classList.contains("absolute") ||
+      img.classList.contains("inset-0")
+    );
+  }
+
+  function makeVeil(options) {
     options = options || {};
-    host.classList.add("coming-soon-media");
-    var pos = window.getComputedStyle(host).position;
-    if (pos === "static") host.style.position = "relative";
     var veil = document.createElement("span");
     veil.className = "coming-soon-veil" + (options.quiet ? " coming-soon-veil--quiet" : "");
     veil.setAttribute("aria-hidden", "true");
@@ -50,37 +56,66 @@
       label.textContent = "Coming soon";
       veil.appendChild(label);
     }
-    host.appendChild(veil);
+    return veil;
   }
 
-  function wrapImage(img, options) {
+  function raiseContentAfter(marker) {
+    var parent = marker.parentElement;
+    if (!parent) return;
+    var seen = false;
+    Array.prototype.forEach.call(parent.children, function (child) {
+      if (child === marker) {
+        seen = true;
+        return;
+      }
+      if (!seen) return;
+      if (child.tagName === "IMG") return;
+      if (child.classList.contains("coming-soon-veil")) return;
+      if (child.classList.contains("coming-soon-media")) return;
+      var pos = window.getComputedStyle(child).position;
+      if (pos === "static") child.style.position = "relative";
+      var z = window.getComputedStyle(child).zIndex;
+      if (z === "auto" || Number(z) < 2) child.style.zIndex = "2";
+    });
+  }
+
+  function overlaySharedParent(parent, options) {
+    if (!parent || parent.querySelector(":scope > .coming-soon-veil")) return;
+    var pos = window.getComputedStyle(parent).position;
+    if (pos === "static") parent.style.position = "relative";
+    var veil = makeVeil(options);
+    var lastImg = null;
+    Array.prototype.forEach.call(parent.children, function (child) {
+      if (child.tagName === "IMG") lastImg = child;
+    });
+    if (lastImg && lastImg.nextSibling) parent.insertBefore(veil, lastImg.nextSibling);
+    else parent.appendChild(veil);
+    raiseContentAfter(veil);
+  }
+
+  function wrapInFlowImage(img, options) {
     if (img.closest(".coming-soon-media")) return;
-
-    var cs = window.getComputedStyle(img);
-    var isAbs = cs.position === "absolute" || cs.position === "fixed";
-    var fills =
-      isAbs ||
-      img.classList.contains("h-full") ||
-      img.classList.contains("absolute") ||
-      cs.height === "100%";
-
+    var fills = img.classList.contains("h-full") || img.classList.contains("w-full");
     var wrap = document.createElement("span");
     wrap.className = "coming-soon-media" + (fills ? " coming-soon-media--fill" : "");
-    if (isAbs) wrap.classList.add("coming-soon-media--abs");
-
     img.parentNode.insertBefore(wrap, img);
     wrap.appendChild(img);
+    wrap.appendChild(makeVeil(options));
+    raiseContentAfter(wrap);
+  }
 
-    if (isAbs) {
-      img.style.position = "static";
-      img.style.inset = "auto";
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = img.style.objectFit || "cover";
-      img.classList.remove("absolute", "inset-0");
+  function applyToImage(img, options) {
+    if (isChrome(img) || isLogo(img) || isPageHero(img)) return;
+    if (img.classList.contains("logo-window-segment")) return;
+    if (img.closest(".coming-soon-media")) return;
+    if (img.parentElement && img.parentElement.querySelector(":scope > .coming-soon-veil")) return;
+
+    if (isFillImage(img)) {
+      overlaySharedParent(img.parentElement, options);
+      return;
     }
 
-    addVeil(wrap, options);
+    wrapInFlowImage(img, options);
   }
 
   function applyHomeHeroRoomOverlays() {
@@ -89,7 +124,8 @@
     );
     slides.forEach(function (slide) {
       var img = slide.querySelector(":scope > img");
-      if (img) wrapImage(img, { quiet: true });
+      if (!img || img.closest(".coming-soon-media")) return;
+      wrapInFlowImage(img, { quiet: true });
     });
   }
 
@@ -117,14 +153,11 @@
 
     document.querySelectorAll(".logo-window").forEach(function (windowEl) {
       if (isChrome(windowEl) || isPageHero(windowEl)) return;
-      addVeil(windowEl);
+      overlaySharedParent(windowEl);
     });
 
     document.querySelectorAll("img").forEach(function (img) {
-      if (isChrome(img) || isLogo(img) || isPageHero(img)) return;
-      if (img.classList.contains("logo-window-segment")) return;
-      if (img.closest(".coming-soon-media")) return;
-      wrapImage(img);
+      applyToImage(img);
     });
   }
 
