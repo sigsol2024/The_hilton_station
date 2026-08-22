@@ -27,7 +27,8 @@
   }
 
   function isGalleryPage() {
-    return /gallery_the_hill_station_jos\.html/i.test(window.location.pathname);
+    return /\/gallery\/?$/i.test(window.location.pathname) ||
+      /gallery_the_hill_station_jos\.html/i.test(window.location.pathname);
   }
 
   function isLogo(img) {

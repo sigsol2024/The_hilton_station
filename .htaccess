@@ -1,0 +1,86 @@
+# The Hill Station — clean URL rewrites (Apache / LiteSpeed)
+# Upload to the site document root alongside index.html.
+# nginx hosts: use nginx-clean-urls.conf instead; this file is ignored there.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 301: /index.html → /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # 301: old filenames → clean slugs
+  RewriteCond %{THE_REQUEST} \s/+about_us_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /about [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+booking_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /rooms [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+room_list\.html[\s?] [NC]
+  RewriteRule ^ /room-list [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+contact_the_hill_station_jos_master_update\.html[\s?] [NC]
+  RewriteRule ^ /contact [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+dining_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /dining [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+gallery_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /gallery [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+leisure\.html[\s?] [NC]
+  RewriteRule ^ /leisure [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+meetings_events_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /meetings-events [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+facilities_the_hill_station_jos_master_update\.html[\s?] [NC]
+  RewriteRule ^ /facilities [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+estate_experiences_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /estate-experiences [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+experiences_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /experiences [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+gym_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /gym [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+laundry_cafe_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /laundry-cafe [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+restaurant_the_hill_station_jos\.html[\s?] [NC]
+  RewriteRule ^ /restaurant [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+room_details_hillstation_suit\.html[\s?] [NC]
+  RewriteRule ^ /suites [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+room_details_hillstation_delux\.html[\s?] [NC]
+  RewriteRule ^ /deluxe [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+room_details_skylark_standard\.html[\s?] [NC]
+  RewriteRule ^ /standard [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+privacy_policy\.html[\s?] [NC]
+  RewriteRule ^ /privacy [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+terms_of_service\.html[\s?] [NC]
+  RewriteRule ^ /terms [R=301,L]
+
+  # 301: any remaining /page.html → /page
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteRule ^ %1 [R=301,L]
+
+  # Serve clean slugs as the existing HTML files
+  RewriteRule ^about/?$ about_us_the_hill_station_jos.html [L]
+  RewriteRule ^rooms/?$ booking_the_hill_station_jos.html [L]
+  RewriteRule ^room-list/?$ room_list.html [L]
+  RewriteRule ^contact/?$ contact_the_hill_station_jos_master_update.html [L]
+  RewriteRule ^dining/?$ dining_the_hill_station_jos.html [L]
+  RewriteRule ^gallery/?$ gallery_the_hill_station_jos.html [L]
+  RewriteRule ^leisure/?$ leisure.html [L]
+  RewriteRule ^meetings-events/?$ meetings_events_the_hill_station_jos.html [L]
+  RewriteRule ^facilities/?$ facilities_the_hill_station_jos_master_update.html [L]
+  RewriteRule ^estate-experiences/?$ estate_experiences_the_hill_station_jos.html [L]
+  RewriteRule ^experiences/?$ experiences_the_hill_station_jos.html [L]
+  RewriteRule ^gym/?$ gym_the_hill_station_jos.html [L]
+  RewriteRule ^laundry-cafe/?$ laundry_cafe_the_hill_station_jos.html [L]
+  RewriteRule ^restaurant/?$ restaurant_the_hill_station_jos.html [L]
+  RewriteRule ^suites/?$ room_details_hillstation_suit.html [L]
+  RewriteRule ^deluxe/?$ room_details_hillstation_delux.html [L]
+  RewriteRule ^standard/?$ room_details_skylark_standard.html [L]
+  RewriteRule ^privacy/?$ privacy_policy.html [L]
+  RewriteRule ^terms/?$ terms_of_service.html [L]
+  RewriteRule ^coming-soon/?$ coming-soon/index.html [L]
+
+  # Fallback: /page → page.html when that file exists
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
+DirectoryIndex index.html
