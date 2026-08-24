@@ -1,0 +1,9 @@
+# Secrets & private data
+config/config.php
+*.sqlite
+*.sqlite-*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

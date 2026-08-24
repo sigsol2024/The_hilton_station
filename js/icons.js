@@ -210,6 +210,8 @@
     obs.observe(document.documentElement, { childList: true, subtree: true });
   }
 
+  window.HillIcons = { paintAll: paintAll };
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", start, { once: true });
   } else {
