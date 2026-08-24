@@ -1,5 +1,6 @@
 (function () {
   var ENDPOINT = "/api/newsletter-signup.php";
+  var SETTINGS_ENDPOINT = "/api/newsletter-settings.php";
   var DISMISS_KEY = "hs_launch_popup_dismissed_day";
   var MIN_SPINNER_MS = 2000;
   var POPUP_DELAY_MS = 10000;
@@ -21,6 +22,21 @@
     try {
       localStorage.setItem(DISMISS_KEY, todayKey());
     } catch (e) {}
+  }
+
+  function clearDismiss() {
+    try {
+      localStorage.removeItem(DISMISS_KEY);
+    } catch (e) {}
+  }
+
+  function popupQueryFlag() {
+    try {
+      var params = new URLSearchParams(window.location.search || "");
+      return (params.get("hs_popup") || "").toLowerCase();
+    } catch (e) {
+      return "";
+    }
   }
 
   function setStatus(el, message, type) {
@@ -175,9 +191,13 @@
     return overlay;
   }
 
-  function initPopup() {
+  function startPopup(options) {
+    options = options || {};
+    var force = !!options.force;
+    var delay = typeof options.delay === "number" ? options.delay : POPUP_DELAY_MS;
+
     if ((document.body.getAttribute("data-page") || "") !== "home") return;
-    if (isDismissedToday()) return;
+    if (!force && isDismissedToday()) return;
 
     var overlay = buildPopup();
     var form = overlay.querySelector("form");
@@ -218,13 +238,49 @@
     });
 
     setTimeout(function () {
-      if (isDismissedToday()) return;
+      if (!force && isDismissedToday()) return;
       overlay.classList.add("is-open");
       document.dispatchEvent(new CustomEvent("hs:icons-refresh"));
       if (window.HillIcons && typeof window.HillIcons.paintAll === "function") {
         window.HillIcons.paintAll(overlay);
       }
-    }, POPUP_DELAY_MS);
+    }, delay);
+  }
+
+  function loadForcePopupSetting() {
+    return fetch(SETTINGS_ENDPOINT, { headers: { Accept: "application/json" }, cache: "no-store" })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        return !!(data && data.forcePopup);
+      })
+      .catch(function () {
+        return false;
+      });
+  }
+
+  function initPopup() {
+    if ((document.body.getAttribute("data-page") || "") !== "home") return;
+
+    var q = popupQueryFlag();
+    if (q === "reset") {
+      clearDismiss();
+    }
+
+    // Instant test: /?hs_popup=1 or /?hs_popup=force or /?hs_popup=reset
+    if (q === "1" || q === "force" || q === "reset" || q === "show") {
+      clearDismiss();
+      startPopup({ force: true, delay: 500 });
+      return;
+    }
+
+    loadForcePopupSetting().then(function (forceFromConfig) {
+      startPopup({
+        force: forceFromConfig,
+        delay: forceFromConfig ? 1500 : POPUP_DELAY_MS
+      });
+    });
   }
 
   function boot() {

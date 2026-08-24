@@ -36,4 +36,8 @@ return [
     'LOGIN_WINDOW_SECONDS' => 900,
     'SIGNUP_RATE_LIMIT' => 12,
     'SIGNUP_RATE_WINDOW' => 600,
+
+    // Testing: true = homepage launch popup always shows (ignores “Dismiss for 24 hours”).
+    // Set false (or omit) in production.
+    'NEWSLETTER_FORCE_POPUP' => false,
 ];
