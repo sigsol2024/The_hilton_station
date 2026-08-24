@@ -16,6 +16,60 @@ function hs_escape_html(string $value): string
 }
 
 /**
+ * Append every mail failure to a private log next to SQLITE_PATH (outside web root)
+ * and PHP's error_log. Never throws.
+ */
+function hs_mail_failure_log(string $channel, string $message, array $lead = []): void
+{
+    $safeMsg = preg_replace('/\s+/', ' ', trim($message)) ?? '';
+    $safeMsg = substr($safeMsg, 0, 2000);
+    $line = sprintf(
+        "[%s UTC] channel=%s lead_id=%s signup_email=%s | %s",
+        gmdate('Y-m-d H:i:s'),
+        $channel,
+        (string) ($lead['id'] ?? ''),
+        (string) ($lead['email'] ?? ''),
+        $safeMsg
+    );
+
+    error_log('hs_mail_failure ' . $line);
+
+    try {
+        $cfg = hs_config();
+        $path = trim((string) ($cfg['MAIL_LOG_PATH'] ?? ''));
+        if ($path === '') {
+            $sqlite = (string) ($cfg['SQLITE_PATH'] ?? '');
+            if ($sqlite === '') {
+                return;
+            }
+            $path = dirname($sqlite) . DIRECTORY_SEPARATOR . 'mail-failures.log';
+        }
+
+        // Same rule as DB: never write under the public site folder
+        $webRoot = str_replace('\\', '/', realpath(dirname(__DIR__)) ?: dirname(__DIR__));
+        $normalized = str_replace('\\', '/', $path);
+        $prefix = rtrim($webRoot, '/') . '/';
+        if (stripos($normalized, $prefix) === 0) {
+            return;
+        }
+
+        $dir = dirname($path);
+        if (!is_dir($dir)) {
+            if (!@mkdir($dir, 0700, true) && !is_dir($dir)) {
+                return;
+            }
+        }
+
+        @file_put_contents($path, $line . PHP_EOL, FILE_APPEND | LOCK_EX);
+        if (is_file($path)) {
+            @chmod($path, 0600);
+        }
+    } catch (Throwable $e) {
+        error_log('hs_mail_failure_log write error: ' . $e->getMessage());
+    }
+}
+
+/**
  * Absolute admin dashboard URL for email CTAs. Must be https://…
  */
 function hs_notify_admin_cta_url(): string
@@ -250,14 +304,17 @@ function hs_send_brevo(array $lead): array
     $cfg = hs_config();
     $apiKey = trim((string) ($cfg['BREVO_API_KEY'] ?? ''));
     if ($apiKey === '') {
-        return ['ok' => false, 'error' => 'Brevo API key not configured'];
+        $err = 'Brevo API key not configured';
+        hs_mail_failure_log('brevo', $err, $lead);
+        return ['ok' => false, 'error' => $err];
     }
 
     try {
         $html = hs_build_notify_html($lead);
         $text = hs_build_notify_text($lead);
     } catch (Throwable $e) {
-        error_log('hs_notify build failed: ' . $e->getMessage());
+        $err = 'Notify template error: ' . $e->getMessage();
+        hs_mail_failure_log('brevo', $err, $lead);
         return ['ok' => false, 'error' => 'Notify template error'];
     }
 
@@ -290,13 +347,18 @@ function hs_send_brevo(array $lead): array
     $errno = curl_errno($ch);
     $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $error = curl_error($ch);
+    $clientIp = substr((string) ($_SERVER['SERVER_ADDR'] ?? $_SERVER['REMOTE_ADDR'] ?? ''), 0, 64);
     curl_close($ch);
 
     if ($errno) {
-        return ['ok' => false, 'error' => 'Brevo curl: ' . $error];
+        $err = 'Brevo curl errno=' . $errno . ' error=' . $error . ' server_ip=' . $clientIp;
+        hs_mail_failure_log('brevo', $err, $lead);
+        return ['ok' => false, 'error' => $err];
     }
     if ($status < 200 || $status >= 300) {
-        return ['ok' => false, 'error' => 'Brevo HTTP ' . $status . ': ' . substr((string) $body, 0, 240)];
+        $err = 'Brevo HTTP ' . $status . ' server_ip=' . $clientIp . ' body=' . substr((string) $body, 0, 1200);
+        hs_mail_failure_log('brevo', $err, $lead);
+        return ['ok' => false, 'error' => substr($err, 0, 500)];
     }
     return ['ok' => true, 'method' => 'brevo'];
 }
@@ -332,12 +394,15 @@ function hs_send_smtp(array $lead): array
         $mail->send();
         return ['ok' => true, 'method' => 'smtp'];
     } catch (Throwable $e) {
-        return ['ok' => false, 'error' => 'SMTP: ' . $e->getMessage()];
+        $err = 'SMTP: ' . $e->getMessage();
+        hs_mail_failure_log('smtp', $err, $lead);
+        return ['ok' => false, 'error' => $err];
     }
 }
 
 /**
  * Attempt Brevo then SMTP. Never throws for delivery failure.
+ * Every channel failure is logged (even if SMTP later succeeds).
  * @return array{status:string,method:string,error:?string}
  */
 function hs_notify_signup(array $lead): array
@@ -355,7 +420,7 @@ function hs_notify_signup(array $lead): array
         ];
     }
     $err = trim(($brevo['error'] ?? '') . ' | ' . ($smtp['error'] ?? ''));
-    error_log('hs_notify_signup failed: ' . $err);
+    hs_mail_failure_log('notify', 'Both Brevo and SMTP failed: ' . $err, $lead);
     return [
         'status' => 'failed',
         'method' => 'none',

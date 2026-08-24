@@ -29,7 +29,7 @@ $countStmt->execute($params);
 $total = (int) $countStmt->fetchColumn();
 $pages = max(1, (int) ceil($total / $perPage));
 
-$listSql = 'SELECT id, full_name, email, phone, source, last_subscribed_at, notification_status, notification_method FROM leads '
+$listSql = 'SELECT id, full_name, email, phone, source, last_subscribed_at, notification_status, notification_method, notification_error FROM leads '
     . $where . ' ORDER BY last_subscribed_at ' . $order . ' LIMIT ' . $perPage . ' OFFSET ' . $offset;
 $listStmt = $pdo->prepare($listSql);
 $listStmt->execute($params);
@@ -121,6 +121,7 @@ $csrf = hs_csrf_token();
     <?php foreach ($leads as $lead):
       $status = (string) ($lead['notification_status'] ?? 'pending');
       $method = (string) ($lead['notification_method'] ?? 'none');
+      $notifyErr = trim((string) ($lead['notification_error'] ?? ''));
       $notifyLabel = $status . ($method !== 'none' ? ' / ' . $method : '');
       $notifyClass = $status === 'sent' ? 'notify-sent' : ($status === 'failed' ? 'notify-failed' : 'notify-pending');
     ?>
@@ -130,7 +131,12 @@ $csrf = hs_csrf_token();
         <td data-label="Email"><?= htmlspecialchars((string) $lead['email'], ENT_QUOTES, 'UTF-8') ?></td>
         <td data-label="Phone"><?= htmlspecialchars((string) $lead['phone'], ENT_QUOTES, 'UTF-8') ?></td>
         <td data-label="Source"><?= htmlspecialchars((string) $lead['source'], ENT_QUOTES, 'UTF-8') ?></td>
-        <td data-label="Notify" class="<?= $notifyClass ?>"><?= htmlspecialchars($notifyLabel, ENT_QUOTES, 'UTF-8') ?></td>
+        <td data-label="Notify" class="<?= $notifyClass ?>"<?= $notifyErr !== '' ? ' title="' . htmlspecialchars($notifyErr, ENT_QUOTES, 'UTF-8') . '"' : '' ?>>
+          <?= htmlspecialchars($notifyLabel, ENT_QUOTES, 'UTF-8') ?>
+          <?php if ($notifyErr !== ''): ?>
+            <div style="margin-top:4px;font-size:11px;line-height:1.35;color:#666;max-width:220px;word-break:break-word;"><?= htmlspecialchars($notifyErr, ENT_QUOTES, 'UTF-8') ?></div>
+          <?php endif; ?>
+        </td>
         <td data-label="Date"><?= htmlspecialchars((string) $lead['last_subscribed_at'], ENT_QUOTES, 'UTF-8') ?> UTC</td>
       </tr>
     <?php endforeach; ?>

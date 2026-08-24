@@ -27,6 +27,9 @@ return [
     // dirname(__DIR__, 2) . '/hillstation-private/newsletter.sqlite'
     'SQLITE_PATH' => '/home/REPLACE/hillstation-private/newsletter.sqlite',
 
+    // Optional. Defaults to same folder as SQLITE_PATH: mail-failures.log
+    // 'MAIL_LOG_PATH' => '/home/REPLACE/hillstation-private/mail-failures.log',
+
     'SESSION_NAME' => 'hs_newsletter_admin',
     'SESSION_TIMEOUT' => 7200,
     'LOGIN_MAX_ATTEMPTS' => 8,

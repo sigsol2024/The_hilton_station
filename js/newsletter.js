@@ -152,11 +152,11 @@
     overlay.setAttribute("aria-labelledby", "hs-popup-title");
     overlay.innerHTML =
       '<div class="hs-popup">' +
-      '<button class="hs-popup__close" type="button" aria-label="Dismiss" data-hs-popup-close>' +
+      '<button class="hs-popup__close" type="button" aria-label="Close" data-hs-popup-close>' +
       '<span class="material-symbols-outlined" data-icon="close"></span>' +
       "</button>" +
       '<p class="hs-popup__kicker">Official launch</p>' +
-      '<h2 class="hs-popup__title" id="hs-popup-title">Get 10% off your first booking at The Hill Station official launch</h2>' +
+      '<h2 class="hs-popup__title" id="hs-popup-title">Get 10% off at The Hill Station launch</h2>' +
       '<form data-newsletter-source="popup" novalidate>' +
       '<input type="text" name="website" value="" tabindex="-1" autocomplete="off" class="hs-honeypot" aria-hidden="true"/>' +
       '<label for="hs-popup-name">Full name</label>' +
@@ -169,6 +169,7 @@
       "</form>" +
       '<p class="hs-popup__consent">By submitting, you agree to receive Hill Station news and launch updates.</p>' +
       '<p class="hs-popup__status" aria-live="polite" hidden></p>' +
+      '<button class="hs-popup__dismiss" type="button" data-hs-popup-dismiss>Dismiss for 24 hours</button>' +
       "</div>";
     document.body.appendChild(overlay);
     return overlay;
@@ -184,14 +185,21 @@
 
     function closePopup() {
       overlay.classList.remove("is-open");
-      dismissForToday();
       setTimeout(function () {
         if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
       }, 300);
     }
 
+    function dismissAndClose() {
+      dismissForToday();
+      closePopup();
+    }
+
     overlay.querySelectorAll("[data-hs-popup-close]").forEach(function (btn) {
       btn.addEventListener("click", closePopup);
+    });
+    overlay.querySelectorAll("[data-hs-popup-dismiss]").forEach(function (btn) {
+      btn.addEventListener("click", dismissAndClose);
     });
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) closePopup();
