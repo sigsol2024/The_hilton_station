@@ -13,11 +13,11 @@ function hs_db(): PDO
 
     $cfg = hs_config();
     $path = (string) $cfg['SQLITE_PATH'];
-    hs_assert_sqlite_outside_webroot($path);
+    hs_assert_sqlite_path($path);
     $dir = dirname($path);
     if (!is_dir($dir)) {
-        if (!mkdir($dir, 0700, true) && !is_dir($dir)) {
-            throw new RuntimeException('Cannot create SQLite directory. Set SQLITE_PATH outside the web root.');
+        if (!mkdir($dir, 0755, true) && !is_dir($dir)) {
+            throw new RuntimeException('Cannot create SQLite directory at: ' . $dir);
         }
     }
 
@@ -34,17 +34,11 @@ function hs_db(): PDO
     return $pdo;
 }
 
-/** SQLITE_PATH must not live under the public site directory. */
-function hs_assert_sqlite_outside_webroot(string $path): void
+/** SQLITE_PATH must be a non-empty absolute path (staging may live under the site folder). */
+function hs_assert_sqlite_path(string $path): void
 {
     if ($path === '' || !preg_match('#^([A-Za-z]:[\\\\/]|/)#', $path)) {
-        throw new RuntimeException('SQLITE_PATH must be an absolute path outside the web root.');
-    }
-    $webRoot = str_replace('\\', '/', realpath(dirname(__DIR__)) ?: dirname(__DIR__));
-    $normalized = str_replace('\\', '/', $path);
-    $prefix = rtrim($webRoot, '/') . '/';
-    if (stripos($normalized, $prefix) === 0) {
-        throw new RuntimeException('SQLITE_PATH must be outside the web root (not under the site folder).');
+        throw new RuntimeException('SQLITE_PATH must be an absolute filesystem path.');
     }
 }
 

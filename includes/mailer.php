@@ -16,7 +16,7 @@ function hs_escape_html(string $value): string
 }
 
 /**
- * Append every mail failure to a private log next to SQLITE_PATH (outside web root)
+ * Append every mail failure to data/mail-failures.log (next to SQLITE_PATH)
  * and PHP's error_log. Never throws.
  */
 function hs_mail_failure_log(string $channel, string $message, array $lead = []): void
@@ -40,22 +40,15 @@ function hs_mail_failure_log(string $channel, string $message, array $lead = [])
         if ($path === '') {
             $sqlite = (string) ($cfg['SQLITE_PATH'] ?? '');
             if ($sqlite === '') {
-                return;
+                $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'mail-failures.log';
+            } else {
+                $path = dirname($sqlite) . DIRECTORY_SEPARATOR . 'mail-failures.log';
             }
-            $path = dirname($sqlite) . DIRECTORY_SEPARATOR . 'mail-failures.log';
-        }
-
-        // Same rule as DB: never write under the public site folder
-        $webRoot = str_replace('\\', '/', realpath(dirname(__DIR__)) ?: dirname(__DIR__));
-        $normalized = str_replace('\\', '/', $path);
-        $prefix = rtrim($webRoot, '/') . '/';
-        if (stripos($normalized, $prefix) === 0) {
-            return;
         }
 
         $dir = dirname($path);
         if (!is_dir($dir)) {
-            if (!@mkdir($dir, 0700, true) && !is_dir($dir)) {
+            if (!@mkdir($dir, 0755, true) && !is_dir($dir)) {
                 return;
             }
         }

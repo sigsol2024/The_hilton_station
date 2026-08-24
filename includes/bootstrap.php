@@ -14,7 +14,7 @@ function hs_config(): array
     }
     $config = require $path;
     if (empty($config['SQLITE_PATH'])) {
-        hs_fatal_config('SQLITE_PATH is required and must be outside the web root');
+        hs_fatal_config('SQLITE_PATH is required (absolute path; staging uses /data/newsletter.sqlite)');
     }
     return $config;
 }

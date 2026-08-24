@@ -2,6 +2,9 @@
 config/config.php
 *.sqlite
 *.sqlite-*
+data/*.sqlite
+data/*.sqlite-*
+data/mail-failures.log
 
 # OS / editor
 .DS_Store
