@@ -369,10 +369,11 @@ function hs_send_smtp(array $lead): array
         $mail->Password = (string) ($cfg['SMTP_PASS'] ?? '');
         $mail->Timeout = 20;
         $secure = strtolower((string) ($cfg['SMTP_SECURE'] ?? 'tls'));
+        // Older PHPMailer builds may lack ENCRYPTION_* constants — use string values
         if ($secure === 'ssl') {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->SMTPSecure = 'ssl';
         } else {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->SMTPSecure = 'tls';
         }
         $mail->CharSet = 'UTF-8';
         $mail->setFrom(
