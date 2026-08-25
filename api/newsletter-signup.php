@@ -78,7 +78,8 @@ try {
     $fullName = hs_sanitize_name((string) ($data['full_name'] ?? ''));
     $phone = hs_sanitize_phone((string) ($data['phone'] ?? ''));
     $source = strtolower(trim((string) ($data['source'] ?? 'footer')));
-    if ($source !== 'popup') {
+    $fullFormSources = ['popup', 'home', 'landing'];
+    if (!in_array($source, $fullFormSources, true)) {
         $source = 'footer';
     }
 
@@ -86,7 +87,7 @@ try {
         hs_json_response(['ok' => false, 'error' => 'Please enter a valid email address.'], 422);
     }
 
-    if ($source === 'popup') {
+    if (in_array($source, $fullFormSources, true)) {
         if ($fullName === '') {
             hs_json_response(['ok' => false, 'error' => 'Please enter your full name.'], 422);
         }

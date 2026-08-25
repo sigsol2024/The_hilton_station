@@ -108,9 +108,13 @@ function hs_notify_logo_url(): string
 
 function hs_notify_source_label(array $lead): string
 {
-    return (($lead['source'] ?? '') === 'popup')
-        ? 'Homepage Launch Popup'
-        : 'Footer Newsletter';
+    $labels = [
+        'popup' => 'Homepage Launch Popup',
+        'home' => 'Homepage Launch Section',
+        'landing' => 'Launch Landing Page',
+    ];
+    $source = (string) ($lead['source'] ?? '');
+    return $labels[$source] ?? 'Footer Newsletter';
 }
 
 function hs_notify_display_date(array $lead): string

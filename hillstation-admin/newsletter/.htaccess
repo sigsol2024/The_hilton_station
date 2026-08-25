@@ -1,1 +1,8 @@
 Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # /hillstation-admin/newsletter/ → index.php (then redirects to login if needed)
+  RewriteRule ^$ index.php [L]
+</IfModule>

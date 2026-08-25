@@ -77,6 +77,7 @@
   RewriteRule ^standard/?$ room_details_skylark_standard.html [L]
   RewriteRule ^privacy/?$ privacy_policy.html [L]
   RewriteRule ^terms/?$ terms_of_service.html [L]
+  RewriteRule ^launch-offer/?$ launch_signup.html [L]
   RewriteRule ^coming-soon/?$ coming-soon/index.html [L]
 
   # Fallback: /page → page.html when that file exists
