@@ -156,6 +156,9 @@ try {
         $leadId,
     ]);
 
+    // Always attempt subscriber welcome email (does not affect signup success)
+    hs_send_welcome_email($lead);
+
     hs_json_response([
         'ok' => true,
         'message' => 'Hooray — you’re among the first guests to claim 10% off at The Hill Station’s official launch.',
