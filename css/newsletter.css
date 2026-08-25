@@ -297,6 +297,8 @@
   border-radius: 50%;
   background: rgba(168, 135, 80, 0.18);
   color: #A88750;
+  font-size: 1.65rem;
+  line-height: 1;
   animation: hs-celebrate-pop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
@@ -474,6 +476,28 @@
 }
 
 /* Launch landing page */
+.hs-launch-standalone {
+  margin: 0;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #1E3D31;
+  color: #fff;
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+}
+
+.hs-launch-standalone .hs-launch-landing {
+  position: relative;
+  min-height: 100svh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem 1.25rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .hs-launch-landing {
   min-height: 100svh;
   display: flex;
@@ -494,6 +518,30 @@
 @media (min-width: 768px) {
   .hs-launch-landing__hero {
     padding: 6.5rem 2rem 3rem;
+  }
+}
+
+.hs-launch-landing__logo {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: block;
+  line-height: 0;
+}
+
+.hs-launch-landing__logo img {
+  width: clamp(7.5rem, 22vw, 10rem);
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 768px) {
+  .hs-launch-landing__logo {
+    top: 1.35rem;
+    left: 1.75rem;
+    transform: none;
   }
 }
 
@@ -519,17 +567,64 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 72rem;
+  max-width: 68rem;
   margin: 0 auto;
   display: grid;
-  gap: 2rem;
+  gap: 1.25rem;
   align-items: center;
+  padding-top: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .hs-launch-standalone .hs-launch-landing__wrap {
+    padding-top: 0;
+    gap: 2rem;
+  }
 }
 
 @media (min-width: 960px) {
   .hs-launch-landing__wrap {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.5rem;
+  }
+}
+
+.hs-launch-standalone .hs-launch-landing__title {
+  font-size: clamp(1.35rem, 4.2vw, 2.35rem);
+  margin-bottom: 0.65rem;
+}
+
+.hs-launch-standalone .hs-launch-landing__desc {
+  font-size: clamp(0.85rem, 2vw, 0.98rem);
+  line-height: 1.55;
+}
+
+.hs-launch-standalone .hs-launch-landing__card {
+  padding: 1rem;
+}
+
+.hs-launch-standalone .hs-launch-form input {
+  margin-bottom: 0.55rem;
+  padding: 0.52rem 0.7rem;
+  font-size: 0.88rem;
+}
+
+.hs-launch-standalone .hs-launch-form__consent {
+  margin-top: 0.5rem;
+  font-size: 0.66rem;
+}
+
+@media (max-height: 700px) {
+  .hs-launch-standalone .hs-launch-landing {
+    align-items: flex-start;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .hs-launch-standalone .hs-launch-landing__wrap {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
   }
 }
 

@@ -162,9 +162,20 @@
     });
   }
 
+  function scheduleApply() {
+    var run = function () {
+      apply();
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(run, { timeout: 2500 });
+    } else {
+      setTimeout(run, 120);
+    }
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", apply, { once: true });
+    document.addEventListener("DOMContentLoaded", scheduleApply, { once: true });
   } else {
-    apply();
+    scheduleApply();
   }
 })();

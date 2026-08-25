@@ -6,7 +6,7 @@
 
   var DISMISS_KEY = "hs_launch_popup_dismissed_day";
 
-  var MIN_SPINNER_MS = 2000;
+  var MIN_SPINNER_MS = 600;
 
   var POPUP_DELAY_MS = 10000;
 
@@ -296,11 +296,7 @@
 
       buildConfettiMarkup() +
 
-      '<div class="hs-celebration__icon" aria-hidden="true">' +
-
-      '<span class="material-symbols-outlined" data-icon="celebration"></span>' +
-
-      "</div>" +
+      '<div class="hs-celebration__icon" aria-hidden="true">🎉</div>' +
 
       '<h3 class="hs-celebration__headline">You\'re on the list!</h3>' +
 
@@ -737,27 +733,27 @@
 
 
   function loadForcePopupSetting() {
+    try {
+      var cached = sessionStorage.getItem("hs_force_popup");
+      if (cached === "0" || cached === "1") {
+        return Promise.resolve(cached === "1");
+      }
+    } catch (e) {}
 
     return fetch(SETTINGS_ENDPOINT, { headers: { Accept: "application/json" }, cache: "no-store" })
-
       .then(function (res) {
-
         return res.json();
-
       })
-
       .then(function (data) {
-
-        return !!(data && data.forcePopup);
-
+        var force = !!(data && data.forcePopup);
+        try {
+          sessionStorage.setItem("hs_force_popup", force ? "1" : "0");
+        } catch (e) {}
+        return force;
       })
-
       .catch(function () {
-
         return false;
-
       });
-
   }
 
 
