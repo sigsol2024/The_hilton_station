@@ -179,17 +179,6 @@
       HILLSIDE +
       '"/>' +
       "</div></div></div>" +
-      '<div class="mt-8 w-full min-w-0" data-newsletter-footer>' +
-      '<p class="mb-3 font-label-caps text-[11px] uppercase tracking-wide text-secondary">Sign up for newsletter</p>' +
-      '<form class="hs-newsletter-form flex flex-col gap-2 sm:flex-row sm:items-stretch" data-newsletter-source="footer" novalidate>' +
-      '<input type="text" name="website" value="" tabindex="-1" autocomplete="off" class="hs-honeypot" aria-hidden="true"/>' +
-      '<label class="sr-only" for="hs-footer-email">Email</label>' +
-      '<input id="hs-footer-email" class="hs-newsletter-input min-w-0 flex-1 border border-primary/45 bg-white/95 px-3 py-2.5 font-body-md text-sm text-[#181818] outline-none focus:border-secondary" type="email" name="email" required placeholder="Your email" autocomplete="email"/>' +
-      '<button class="hs-newsletter-submit inline-flex shrink-0 items-center justify-center bg-secondary px-5 py-2.5 font-label-caps text-[11px] uppercase text-primary transition-opacity hover:opacity-90" type="submit">Subscribe</button>' +
-      "</form>" +
-      '<p class="mt-2 font-body-md text-[11px] leading-snug text-on-primary/55">By subscribing, you agree to receive Hill Station news and launch updates.</p>' +
-      '<p class="hs-newsletter-status mt-2 font-body-md text-sm" aria-live="polite" hidden></p>' +
-      "</div>" +
       "</div></div>" +
       '<div class="border-t border-on-primary/10 px-margin-mobile py-6 md:px-margin-desktop">' +
       '<div class="mx-auto flex max-w-container-max flex-col gap-4 font-body-md text-sm text-on-primary/55 md:flex-row md:items-center md:justify-between">' +
