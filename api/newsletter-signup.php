@@ -98,6 +98,7 @@ try {
     $now = gmdate('Y-m-d H:i:s');
     $pdo = hs_db();
 
+    // Use SQL BEGIN/COMMIT — PDO commit()/rollBack() do not track exec('BEGIN IMMEDIATE') on some hosts
     $pdo->exec('BEGIN IMMEDIATE');
     try {
         $stmt = $pdo->prepare(
@@ -122,10 +123,12 @@ try {
         $idStmt = $pdo->prepare('SELECT id FROM leads WHERE email = ? LIMIT 1');
         $idStmt->execute([$email]);
         $leadId = (int) $idStmt->fetchColumn();
-        $pdo->commit();
+        $pdo->exec('COMMIT');
     } catch (Throwable $e) {
-        if ($pdo->inTransaction()) {
-            $pdo->rollBack();
+        try {
+            $pdo->exec('ROLLBACK');
+        } catch (Throwable $ignored) {
+            // ignore rollback errors
         }
         error_log('newsletter-signup save failed: ' . $e->getMessage());
         hs_json_response(['ok' => false, 'error' => 'Unable to save your signup. Please try again.'], 500);

@@ -28,8 +28,9 @@ function hs_db(): PDO
     $pdo->exec('PRAGMA foreign_keys = ON');
     $pdo->exec('PRAGMA journal_mode = WAL');
     hs_migrate($pdo);
+    // Keep staging DB writable by the web user; do not force 0600 (that locked PHP out before)
     if (is_file($path)) {
-        @chmod($path, 0600);
+        @chmod($path, 0664);
     }
     return $pdo;
 }
