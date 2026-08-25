@@ -352,7 +352,7 @@
 
     if (source === "home") {
 
-      return form.closest(".hs-launch-section__inner");
+      return form.closest(".hs-launch-section__form-wrap") || form.parentElement;
 
     }
 
