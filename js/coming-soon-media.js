@@ -31,6 +31,10 @@
       /gallery_the_hill_station_jos\.html/i.test(window.location.pathname);
   }
 
+  function isRoomPhoto(img) {
+    return /\/assets\/rooms\//i.test(img.getAttribute("src") || "");
+  }
+
   function isLogo(img) {
     var src = (img.getAttribute("src") || "") + " " + (img.getAttribute("alt") || "");
     return /logo/i.test(src) && !/logo-window/i.test(src);
@@ -106,7 +110,7 @@
   }
 
   function applyToImage(img, options) {
-    if (isChrome(img) || isLogo(img) || isPageHero(img)) return;
+    if (isChrome(img) || isLogo(img) || isPageHero(img) || isRoomPhoto(img)) return;
     if (img.classList.contains("logo-window-segment")) return;
     if (img.closest(".coming-soon-media")) return;
     if (img.parentElement && img.parentElement.querySelector(":scope > .coming-soon-veil")) return;
@@ -125,7 +129,7 @@
     );
     slides.forEach(function (slide) {
       var img = slide.querySelector(":scope > img");
-      if (!img || img.closest(".coming-soon-media")) return;
+      if (!img || img.closest(".coming-soon-media") || isRoomPhoto(img)) return;
       wrapInFlowImage(img, { quiet: true });
     });
   }
