@@ -732,11 +732,11 @@
 
 
 
-  function loadForcePopupSetting() {
+  function loadPopupSettings() {
     try {
-      var cached = sessionStorage.getItem("hs_force_popup");
-      if (cached === "0" || cached === "1") {
-        return Promise.resolve(cached === "1");
+      var cached = JSON.parse(sessionStorage.getItem("hs_popup_settings") || "null");
+      if (cached && typeof cached.enabled === "boolean") {
+        return Promise.resolve(cached);
       }
     } catch (e) {}
 
@@ -745,14 +745,17 @@
         return res.json();
       })
       .then(function (data) {
-        var force = !!(data && data.forcePopup);
+        var settings = {
+          enabled: !data || data.popupEnabled !== false,
+          force: !!(data && data.forcePopup)
+        };
         try {
-          sessionStorage.setItem("hs_force_popup", force ? "1" : "0");
+          sessionStorage.setItem("hs_popup_settings", JSON.stringify(settings));
         } catch (e) {}
-        return force;
+        return settings;
       })
       .catch(function () {
-        return false;
+        return { enabled: true, force: false };
       });
   }
 
@@ -786,16 +789,12 @@
 
 
 
-    loadForcePopupSetting().then(function (forceFromConfig) {
-
+    loadPopupSettings().then(function (settings) {
+      if (!settings.enabled) return;
       startPopup({
-
-        force: forceFromConfig,
-
-        delay: forceFromConfig ? 1500 : POPUP_DELAY_MS
-
+        force: settings.force,
+        delay: settings.force ? 1500 : POPUP_DELAY_MS
       });
-
     });
 
   }

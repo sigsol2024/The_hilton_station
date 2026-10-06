@@ -34,6 +34,9 @@ return [
     'SIGNUP_RATE_LIMIT' => 12,
     'SIGNUP_RATE_WINDOW' => 600,
 
+    // false = turn off the homepage 10% launch popup. The homepage section and /launch-offer still work.
+    'NEWSLETTER_POPUP_ENABLED' => true,
+
     // Testing: true = homepage launch popup always shows (ignores “Dismiss for 24 hours”).
     // Set false (or omit) in production.
     'NEWSLETTER_FORCE_POPUP' => false,

@@ -25,6 +25,8 @@ if ($origin !== '' && rtrim($origin, '/') === $allowed) {
 
 echo json_encode([
     'ok' => true,
+    // false = homepage popup never shows automatically. Missing key keeps it on.
+    'popupEnabled' => !array_key_exists('NEWSLETTER_POPUP_ENABLED', $cfg) || !empty($cfg['NEWSLETTER_POPUP_ENABLED']),
     // true = always show homepage popup (ignore 24h dismiss). Set false in production.
     'forcePopup' => !empty($cfg['NEWSLETTER_FORCE_POPUP']),
 ]);
