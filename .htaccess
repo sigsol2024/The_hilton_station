@@ -88,3 +88,10 @@
 </IfModule>
 
 DirectoryIndex index.html
+
+# Browsers must re-check pages, scripts and styles on each visit so updates show up straight away.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|js|css)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

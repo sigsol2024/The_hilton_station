@@ -732,30 +732,34 @@
 
 
 
+  var popupSettingsPromise = null;
+
   function loadPopupSettings() {
+    if (!popupSettingsPromise) popupSettingsPromise = fetchPopupSettings();
+    return popupSettingsPromise;
+  }
+
+  // Settings are read fresh on every page load so a config change applies immediately.
+  // If they can't be read, the popup and launch section stay off.
+  function fetchPopupSettings() {
     try {
-      var cached = JSON.parse(sessionStorage.getItem("hs_popup_settings") || "null");
-      if (cached && typeof cached.enabled === "boolean") {
-        return Promise.resolve(cached);
-      }
+      sessionStorage.removeItem("hs_popup_settings");
     } catch (e) {}
 
     return fetch(SETTINGS_ENDPOINT, { headers: { Accept: "application/json" }, cache: "no-store" })
       .then(function (res) {
+        if (!res.ok) throw new Error("settings unavailable");
         return res.json();
       })
       .then(function (data) {
-        var settings = {
-          enabled: !data || data.popupEnabled !== false,
-          force: !!(data && data.forcePopup)
+        if (!data || data.ok !== true) throw new Error("settings unavailable");
+        return {
+          enabled: data.popupEnabled !== false,
+          force: !!data.forcePopup
         };
-        try {
-          sessionStorage.setItem("hs_popup_settings", JSON.stringify(settings));
-        } catch (e) {}
-        return settings;
       })
       .catch(function () {
-        return { enabled: true, force: false };
+        return { enabled: false, force: false };
       });
   }
 
@@ -801,9 +805,29 @@
 
 
 
+  // The homepage launch section follows the same on/off setting as the popup.
+  function initLaunchSection() {
+    var section = document.querySelector(".hs-launch-section");
+    if (!section) return;
+
+    var q = popupQueryFlag();
+    if (q === "1" || q === "force" || q === "reset" || q === "show") {
+      section.hidden = false;
+      return;
+    }
+
+    loadPopupSettings().then(function (settings) {
+      section.hidden = !settings.enabled;
+    });
+  }
+
+
+
   function boot() {
 
     bindFooterForms(document);
+
+    initLaunchSection();
 
     initPopup();
 
