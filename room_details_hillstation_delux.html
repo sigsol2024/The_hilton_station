@@ -242,6 +242,7 @@
   <link rel="stylesheet" href="/css/newsletter.css"/>
   <script src="/js/site-chrome.js" defer></script>
   <script src="/js/newsletter.js" defer></script>
+  <script src="/js/booking-engine.js" defer></script>
 </head>
 <body class="bg-white text-on-surface font-body-md" data-page="deluxe">
 <div id="site-header-root"></div>
@@ -314,23 +315,28 @@
       <aside class="hidden lg:block lg:col-span-4">
         <div class="sticky sidebar-sticky brand-green-card p-8 editorial-shadow">
           <h3 class="font-headline-sm text-headline-sm text-on-primary mb-8">Reservation</h3>
-          <div class="space-y-6">
+          <form class="space-y-6" data-booking-form novalidate>
             <div><span class="font-label-caps text-[10px] text-secondary uppercase mb-2 block">Check-in / Check-out</span><p class="font-body-md text-on-primary">15:00 / 11:00</p></div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="font-label-caps text-[10px] text-secondary uppercase mb-2 block" for="room-arrival">Arrival</label><input class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 px-0 font-body-md text-on-primary focus:outline-none focus:ring-0 focus:border-secondary [color-scheme:dark]" id="room-arrival" name="arrival" type="date" required/></div>
+              <div><label class="font-label-caps text-[10px] text-secondary uppercase mb-2 block" for="room-departure">Departure</label><input class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 px-0 font-body-md text-on-primary focus:outline-none focus:ring-0 focus:border-secondary [color-scheme:dark]" id="room-departure" name="departure" type="date" required/></div>
+            </div>
             <div>
               <label class="font-label-caps text-[10px] text-secondary uppercase mb-2 block" for="room-category-select">Room Category</label>
               <div class="relative">
-                <select id="room-category-select" class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 pr-8 font-body-md text-on-primary appearance-none cursor-pointer focus:outline-none focus:border-secondary">
-                  <option>Hill Station Suites</option>
-                  <option selected>Hill Station Deluxe</option>
-                  <option>Hill Station Standard</option>
+                <select id="room-category-select" name="room" class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 pr-8 font-body-md text-on-primary appearance-none cursor-pointer focus:outline-none focus:border-secondary">
+                  <option value="suites">Hill Station Suites</option>
+                  <option value="deluxe" selected>Hill Station Deluxe</option>
+                  <option value="standard">Hill Station Standard</option>
                 </select>
                 <span class="absolute right-0 bottom-2 text-secondary material-symbols-outlined pointer-events-none text-[20px]" data-icon="expand_more"></span>
               </div>
             </div>
             <div><span class="font-label-caps text-[10px] text-secondary uppercase mb-2 block">Children</span><p class="font-body-md text-on-primary/85">Infant below 3 years. Child below 16 years.</p></div>
-            <a class="flex w-full items-center justify-center bg-secondary text-primary py-4 font-label-caps text-[13px] uppercase hover:brightness-110 transition-all" href="/rooms">Book This Room</a>
+            <button class="flex w-full items-center justify-center bg-secondary text-primary py-4 font-label-caps text-[13px] uppercase hover:brightness-110 transition-all" type="submit">Book This Room</button>
+            <p class="font-body-md text-sm text-secondary" data-booking-error role="alert" hidden></p>
             <a class="flex w-full items-center justify-center border border-secondary text-on-primary py-4 font-label-caps text-[13px] uppercase hover:bg-secondary hover:text-primary transition-all" href="/rooms">View All Rooms</a>
-          </div>
+          </form>
           <div class="mt-10 pt-8 border-t border-on-primary/20 text-center">
             <span class="font-label-caps text-[12px] text-on-primary/70 block mb-2">Need Assistance?</span>
             <a class="font-body-md text-secondary underline decoration-secondary/30 hover:decoration-secondary underline-offset-4" href="/contact">Concierge Desk</a>
@@ -381,23 +387,28 @@
         <span class="material-symbols-outlined" data-icon="close"></span>
       </button>
     </div>
-    <div class="space-y-6">
+    <form class="space-y-6" data-booking-form novalidate>
       <div><span class="font-label-caps text-[10px] text-secondary uppercase mb-2 block">Check-in / Check-out</span><p class="font-body-md text-on-primary">15:00 / 11:00</p></div>
+      <div class="grid grid-cols-2 gap-4">
+        <div><label class="font-label-caps text-[10px] text-secondary uppercase mb-2 block" for="room-arrival-mobile">Arrival</label><input class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 px-0 font-body-md text-on-primary focus:outline-none focus:ring-0 focus:border-secondary [color-scheme:dark]" id="room-arrival-mobile" name="arrival" type="date" required/></div>
+        <div><label class="font-label-caps text-[10px] text-secondary uppercase mb-2 block" for="room-departure-mobile">Departure</label><input class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 px-0 font-body-md text-on-primary focus:outline-none focus:ring-0 focus:border-secondary [color-scheme:dark]" id="room-departure-mobile" name="departure" type="date" required/></div>
+      </div>
       <div>
         <label class="font-label-caps text-[10px] text-secondary uppercase mb-2 block" for="room-category-select-mobile">Room Category</label>
         <div class="relative">
-          <select id="room-category-select-mobile" class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 pr-8 font-body-md text-on-primary appearance-none cursor-pointer focus:outline-none focus:border-secondary">
-            <option>Hill Station Suites</option>
-            <option selected>Hill Station Deluxe</option>
-            <option>Hill Station Standard</option>
+          <select id="room-category-select-mobile" name="room" class="w-full bg-transparent border-t-0 border-x-0 border-b border-secondary/60 py-2 pr-8 font-body-md text-on-primary appearance-none cursor-pointer focus:outline-none focus:border-secondary">
+            <option value="suites">Hill Station Suites</option>
+            <option value="deluxe" selected>Hill Station Deluxe</option>
+            <option value="standard">Hill Station Standard</option>
           </select>
           <span class="absolute right-0 bottom-2 text-secondary material-symbols-outlined pointer-events-none text-[20px]" data-icon="expand_more"></span>
         </div>
       </div>
       <div><span class="font-label-caps text-[10px] text-secondary uppercase mb-2 block">Children</span><p class="font-body-md text-on-primary/85">Infant below 3 years. Child below 16 years.</p></div>
-      <a class="flex w-full items-center justify-center bg-secondary text-primary py-4 font-label-caps text-[13px] uppercase" href="/rooms">Book This Room</a>
+      <button class="flex w-full items-center justify-center bg-secondary text-primary py-4 font-label-caps text-[13px] uppercase" type="submit">Book This Room</button>
+      <p class="font-body-md text-sm text-secondary" data-booking-error role="alert" hidden></p>
       <a class="flex w-full items-center justify-center border border-secondary text-on-primary py-4 font-label-caps text-[13px] uppercase" href="/rooms">View All Rooms</a>
-    </div>
+    </form>
     <div class="mt-8 pt-6 border-t border-on-primary/20 text-center">
       <span class="font-label-caps text-[12px] text-on-primary/70 block mb-2">Need Assistance?</span>
       <a class="font-body-md text-secondary underline decoration-secondary/30 hover:decoration-secondary underline-offset-4" href="/contact">Concierge Desk</a>

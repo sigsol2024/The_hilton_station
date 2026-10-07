@@ -225,6 +225,7 @@
   <link rel="stylesheet" href="/css/newsletter.css"/>
   <script src="/js/site-chrome.js" defer></script>
   <script src="/js/newsletter.js" defer></script>
+  <script src="/js/booking-engine.js" defer></script>
 </head>
 <body class="bg-white text-on-surface font-body-md overflow-x-hidden selection:bg-tertiary-fixed selection:text-primary" data-page="rooms">
 <div id="site-header-root"></div>
@@ -253,53 +254,37 @@
 <!-- Reservation Bar -->
 <section class="relative z-30 -mt-12 px-6 md:px-margin-desktop">
 <div class="max-w-container-max mx-auto bg-surface-container border border-outline-variant/20 p-8 md:p-12 shadow-sm">
-<form class="grid grid-cols-1 md:grid-cols-5 gap-y-10 md:gap-x-gutter">
+<form class="grid grid-cols-1 md:grid-cols-4 gap-y-10 md:gap-x-gutter" data-booking-form novalidate>
 <!-- Arrival -->
 <div class="flex flex-col gap-2">
-<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">Arrival Date</label>
-<input class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary" type="date" value="2024-11-20"/>
+<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]" for="booking-arrival">Arrival Date</label>
+<input class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary" id="booking-arrival" name="arrival" type="date" required/>
 </div>
 <!-- Departure -->
 <div class="flex flex-col gap-2">
-<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">Departure Date</label>
-<input class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary" type="date" value="2024-11-25"/>
-</div>
-<!-- Guests -->
-<div class="flex flex-col gap-2 relative group">
-<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">Guests</label>
-<select class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary appearance-none cursor-pointer">
-<option>1 Adult</option>
-<option selected="">2 Adults</option>
-<option>2 Adults, 1 Child</option>
-<option>2 Adults, 2 Children</option>
-</select>
-<span class="absolute right-0 bottom-2 text-primary material-symbols-outlined pointer-events-none" data-icon="expand_more"></span>
-<p class="text-[10px] text-on-surface-variant mt-1 font-label-caps">Infant: &lt;3 | Child: &lt;16</p>
+<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]" for="booking-departure">Departure Date</label>
+<input class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary" id="booking-departure" name="departure" type="date" required/>
 </div>
 <!-- Room Category -->
 <div class="flex flex-col gap-2 relative">
-<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">Room Category</label>
-<select class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary appearance-none cursor-pointer">
-<option>Hill Station Suites</option>
-<option>Hill Station Deluxe</option>
-<option>Hill Station Standard</option>
+<label class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]" for="booking-room">Room Category</label>
+<select class="bg-transparent border-t-0 border-x-0 border-b border-primary py-2 font-body-md text-primary appearance-none cursor-pointer" id="booking-room" name="room">
+<option value="" selected>Any Room</option>
+<option value="suites">Hill Station Suites</option>
+<option value="deluxe">Hill Station Deluxe</option>
+<option value="standard">Hill Station Standard</option>
 </select>
 <span class="absolute right-0 bottom-2 text-primary material-symbols-outlined pointer-events-none" data-icon="expand_more"></span>
 </div>
 <!-- Search CTA -->
 <div class="flex items-end">
-<button class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps tracking-widest hover:bg-primary-container transition-colors duration-300 uppercase">
+<button class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps tracking-widest hover:bg-primary-container transition-colors duration-300 uppercase" type="submit">
                             Check Availability
                         </button>
 </div>
+<p class="md:col-span-4 -mt-4 font-body-md text-sm text-error" data-booking-error role="alert" hidden></p>
 </form>
-<!-- Promo Code -->
-<div class="mt-8 flex justify-end">
-<div class="flex items-center gap-4 border-b border-outline-variant/30 w-full md:w-1/4">
-<label class="font-label-caps text-[10px] text-on-surface-variant shrink-0">PROMO CODE:</label>
-<input class="bg-transparent border-none py-1 font-body-md text-primary placeholder:text-outline-variant text-right grow focus:ring-0" placeholder="Enter Code" type="text"/>
-</div>
-</div>
+<p class="mt-8 font-body-md text-sm text-on-surface-variant md:text-right">Guests, promo codes and payment are completed on our secure booking page (opens in a new tab).</p>
 </div>
 </section>
 <!-- Availability Results (Editorial Layout) -->
