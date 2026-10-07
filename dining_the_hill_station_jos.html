@@ -263,8 +263,12 @@
 <section class="pt-section-gap pb-section-gap px-margin-mobile md:px-margin-desktop">
 <div class="grid md:grid-cols-12 items-center gap-gutter">
 <div class="md:col-span-7 relative group">
-<div class="aspect-[4/5] md:aspect-[16/10] overflow-hidden editorial-shadow relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="The Laundry Caf&eacute; at The Hill Station Jos" src="/assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.25 PM.jpeg"/>
+<div class="aspect-[4/5] md:aspect-[16/10] overflow-hidden editorial-shadow relative venue-slider">
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-100 group-hover:scale-105" alt="The Laundry Caf&eacute; dining room at The Hill Station Jos" src="/assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.25 PM.jpeg"/>
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 group-hover:scale-105" alt="The Laundry Caf&eacute; coffee and pastry counter" loading="lazy" src="/assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.25 PM (4).jpeg"/>
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 group-hover:scale-105" alt="Green banquette booths at The Laundry Caf&eacute;" loading="lazy" src="/assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.26 PM (1).jpeg"/>
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 group-hover:scale-105" alt="The Laundry Caf&eacute; seating under timber beams" loading="lazy" src="/assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-25 at 2.28.24 PM (3).jpeg"/>
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 group-hover:scale-105" alt="The Laundry Caf&eacute; exterior" loading="lazy" src="/assets/Facilities/Hillstation Laundry Cafe design/WhatsApp Image 2026-05-26 at 11.43.50 AM.jpeg"/>
 </div>
 </div>
 <div class="md:col-span-5 md:pl-12 pt-8 md:pt-0">
@@ -309,8 +313,9 @@
 <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white overflow-hidden">
 <div class="grid md:grid-cols-12 items-center gap-gutter">
 <div class="md:col-span-7 relative group">
-<div class="aspect-[4/5] md:aspect-[16/10] overflow-hidden editorial-shadow">
-<img class="w-full h-full object-cover" alt="The Pool Bar at The Hill Station Jos" src="/assets/Facilities/Pool/pool-02.jpg"/>
+<div class="aspect-[4/5] md:aspect-[16/10] overflow-hidden editorial-shadow relative venue-slider">
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-100 group-hover:scale-105" alt="The Pool Bar terrace at The Hill Station Jos" src="/assets/Facilities/Pool/pool-02.jpg"/>
+<img class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 opacity-0 group-hover:scale-105" alt="The pool and Plateau views from The Pool Bar" loading="lazy" src="/assets/Facilities/Pool/pool-01.jpg"/>
 </div>
 </div>
 <div class="md:col-span-5 md:pl-12 pt-8 md:pt-0">
@@ -415,6 +420,46 @@
                 if (heroImg) {
                     heroImg.style.transform = `scale(1.05) translateY(${scrolled * 0.1}px)`;
                 }
+            });
+        });
+    </script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            document.querySelectorAll('.venue-slider').forEach((slider, sliderIndex) => {
+                const images = slider.querySelectorAll('img');
+                if (images.length < 2) return;
+
+                let current = 0;
+                const dotsWrap = document.createElement('div');
+                dotsWrap.style.cssText = 'position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:8px;z-index:2;';
+                const dots = [...images].map((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', `Show photo ${i + 1} of ${images.length}`);
+                    dot.style.cssText = 'width:8px;height:8px;border-radius:9999px;border:1px solid #fff;padding:0;cursor:pointer;transition:background .3s;';
+                    dot.addEventListener('click', () => { show(i); restart(); });
+                    dotsWrap.appendChild(dot);
+                    return dot;
+                });
+                slider.appendChild(dotsWrap);
+
+                function show(next) {
+                    images[current].classList.replace('opacity-100', 'opacity-0');
+                    current = next;
+                    images[current].classList.replace('opacity-0', 'opacity-100');
+                    dots.forEach((dot, i) => { dot.style.background = i === current ? '#fff' : 'transparent'; });
+                }
+
+                let timer;
+                function restart() {
+                    if (reduceMotion) return;
+                    clearInterval(timer);
+                    timer = setInterval(() => show((current + 1) % images.length), 4500);
+                }
+
+                show(0);
+                setTimeout(restart, sliderIndex * 900);
             });
         });
     </script>
