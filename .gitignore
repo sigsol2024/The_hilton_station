@@ -6,6 +6,10 @@ data/*.sqlite
 data/*.sqlite-*
 data/mail-failures.log
 
+# Design source files
+*.psd
+*.psb
+
 # OS / editor
 .DS_Store
 Thumbs.db
